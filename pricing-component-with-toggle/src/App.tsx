@@ -9,7 +9,7 @@ function App() {
   }
 
   return (
-    <body>
+    <div className="main-container">
       <h2 className="pricing-title">Our Pricing</h2>
       <div className="toggle-info">
         <h3 className="toggle-details">Annually</h3>
@@ -76,7 +76,7 @@ function App() {
         </a>
         .
       </footer>
-    </body>
+    </div>
   );
 }
 
