@@ -10,16 +10,22 @@ function App() {
 
   return (
     <div className="main-container">
-      <h2 className="pricing-title">Our Pricing</h2>
-      <div className="toggle-info">
-        <h3 className="toggle-details">Annually</h3>
-        <label className="switch">
-          <input type="checkbox" onClick={togglePricing} />
-          <span className="slider round"></span>
-        </label>
-        <h3 className="toggle-details">Monthly</h3>
-      </div>
-      <div className="info-container">
+      <header>
+        <h2 className="pricing-title">Our Pricing</h2>
+        <div className="toggle-info">
+          <h3 className="toggle-details">Annually</h3>
+          <label className="switch">
+            <input
+              type="checkbox"
+              onClick={togglePricing}
+              aria-label="toggle-pricing"
+            />
+            <span className="slider round"></span>
+          </label>
+          <h3 className="toggle-details">Monthly</h3>
+        </div>
+      </header>
+      <main>
         <div className="side-info-box">
           <div className="plan-title">Basic</div>
           <h1 className="price">{!pricing ? "$19.99" : "$199.99"}</h1>
@@ -56,7 +62,7 @@ function App() {
           <hr />
           <button>Learn More</button>
         </div>
-      </div>
+      </main>
       <footer className="attribution">
         Challenge by{" "}
         <a
