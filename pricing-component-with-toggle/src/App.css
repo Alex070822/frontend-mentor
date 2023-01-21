@@ -203,7 +203,7 @@ footer {
 
 @media screen and (max-width: 375px) {
 
-  .info-container {
+  main {
     flex-direction: column;
     row-gap: 32px;
     height: auto;
