@@ -1,6 +1,5 @@
 import "./styles.scss";
 import { useRef, useState } from "react";
-import Checkmark from "./media/icon-check.svg";
 
 function App() {
   //Range slider
@@ -13,6 +12,8 @@ function App() {
   const monthlyCost = sliderValue;
   const annualCost = sliderValue * 12 * 0.75;
 
+  const checkmarkImg = require("./media/icon-check.svg").default;
+
   function togglePricing() {
     setPricing((prevMode) => !prevMode);
   }
@@ -23,7 +24,10 @@ function App() {
         <div className="header-bg-img">
           <div>
             <h1>Simple, traffic-based pricing</h1>
-            <h2>Sign-up for our 30-day trial. No credit card required.</h2>
+            <h2>
+              <span>Sign-up for our 30-day trial. </span>
+              <span>No credit card required.</span>
+            </h2>
           </div>
         </div>
       </header>
@@ -44,7 +48,6 @@ function App() {
               }
             }}
             type="range"
-            className="range-slider"
             value={sliderValue}
             min="2"
             max="32"
@@ -71,15 +74,15 @@ function App() {
         <div className="benefits-grouping">
           <div className="benefits">
             <div className="checkmark-grouping">
-              <img src={Checkmark} alt="checkmark" className="checkmark" />
+              <img src={checkmarkImg} alt="checkmark" className="checkmark" />
               <p>Unlimited websites</p>
             </div>
             <div className="checkmark-grouping">
-              <img src={Checkmark} alt="checkmark" className="checkmark" />
+              <img src={checkmarkImg} alt="checkmark" className="checkmark" />
               <p>100% data ownership</p>
             </div>
             <div className="checkmark-grouping">
-              <img src={Checkmark} alt="checkmark" className="checkmark" />
+              <img src={checkmarkImg} alt="checkmark" className="checkmark" />
               <p>Email reports</p>
             </div>
           </div>
