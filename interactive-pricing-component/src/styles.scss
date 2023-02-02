@@ -16,6 +16,13 @@ $color-cyan-5: #A4F3EB;
 $color-orange-1: #FF8D68;
 $color-orange-2: #FEEDE8;
 
+//Mixins
+@mixin horizontal-center() {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -48,10 +55,8 @@ h2 {
 }
 
 main {
-  position: absolute;
+  @include horizontal-center();
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
   margin-top: 266px;
   width: 540px;
   height: 397px;
@@ -77,12 +82,10 @@ hr {
 }
 
 .header-bg-img {
-  position: absolute;
+  @include horizontal-center();
   display: flex;
   align-items: center;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
   margin-top: 67px;
   background-image: url("/media/pattern-circles.svg");
   background-position: center;
@@ -163,9 +166,7 @@ input[type="range"] {
 }
 
 .toggle-info {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  @include horizontal-center();
   display: inline-flex;
   align-items: center;
 }
@@ -325,5 +326,11 @@ input[type="checkbox"]{
     font-size: 12px;
     margin-left: 0;
     margin-top: 34px;
+  }
+
+  .amount-per-period {
+    @include horizontal-center();
+    margin-left: 0;
+    margin-top: 89px;
   }
 }
