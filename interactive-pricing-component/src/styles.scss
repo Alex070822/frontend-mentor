@@ -18,8 +18,8 @@ $color-orange-1: #FF8D68;
 $color-orange-2: #FEEDE8;
 
 :export {
-  blue5: $color-blue-5;
-  cyan5: $color-cyan-5;
+  colorBlue5: $color-blue-5;
+  colorCyan5: $color-cyan-5;
 }
 
 //Mixins
@@ -253,6 +253,21 @@ input[type="checkbox"]{
   margin-right: 65px;
 }
 
+.discount-mobile {
+  display: none;
+  height: 19px;
+  width: 42px;
+  background: $color-orange-2;
+  color: $color-orange-1;
+  font-weight: 800;
+  font-size: 10px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  margin-left: auto;
+  margin-right: 65px;
+}
+
 .benefits-grouping {
   display: flex;
   align-items: center;
@@ -336,5 +351,13 @@ input[type="checkbox"]{
     font-size: 12px;
     margin-left: 0;
     margin-top: 34px;
+  }
+
+  .discount {
+    display: none;
+  }
+
+  .discount-mobile {
+    display: inline-flex;
   }
 }

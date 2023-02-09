@@ -22,11 +22,11 @@ const RangeSlider: FC<RangeSliderProps> = ({
     let progress = ((value - min) / (max - min)) * 100;
 
     input.style.background =
-      `linear-gradient(to right, ${variables.cyan5} 0%, ${variables.cyan5} ` +
+      `linear-gradient(to right, ${variables.colorCyan5} 0%, ${variables.colorCyan5} ` +
       progress +
-      `%, ${variables.blue5} ` +
+      `%, ${variables.colorBlue5} ` +
       value +
-      `%, ${variables.blue5} 100%)`;
+      `%, ${variables.colorBlue5} 100%)`;
   }
 
   return (

@@ -1,5 +1,7 @@
 import { useRef, useState } from "react";
 import RangeSlider from "./RangeSlider";
+import Card from "./Card";
+import data from "../data/data";
 
 function Main() {
   //Range slider
@@ -12,11 +14,13 @@ function Main() {
   const monthlyCost = sliderValue;
   const annualCost = sliderValue * 12 * 0.75;
 
-  const checkmarkImg = require("../media/icon-check.svg").default;
-
   function togglePricing() {
     setPricing((prevMode) => !prevMode);
   }
+
+  const cards = data.map((item) => {
+    return <Card key={item.id} title={item.title} />;
+  });
 
   return (
     <main>
@@ -44,23 +48,11 @@ function Main() {
           <p className="toggle-details">Yearly Billing</p>
         </div>
         <p className="discount">25% discount</p>
+        <p className="discount-mobile">-25%</p>
       </div>
       <hr />
       <div className="benefits-grouping">
-        <div className="benefits">
-          <div className="checkmark-grouping">
-            <img src={checkmarkImg} alt="checkmark" className="checkmark" />
-            <p>Unlimited websites</p>
-          </div>
-          <div className="checkmark-grouping">
-            <img src={checkmarkImg} alt="checkmark" className="checkmark" />
-            <p>100% data ownership</p>
-          </div>
-          <div className="checkmark-grouping">
-            <img src={checkmarkImg} alt="checkmark" className="checkmark" />
-            <p>Email reports</p>
-          </div>
-        </div>
+        <div className="benefits">{cards}</div>
         <button className="trial-btn">Start my trial</button>
       </div>
     </main>
