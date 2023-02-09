@@ -1,4 +1,4 @@
-export default [
+let data = [
   {
     id: 1,
     title: "Unlimited websites",
@@ -12,3 +12,5 @@ export default [
     title: "Email reports",
   },
 ];
+
+export default data;
