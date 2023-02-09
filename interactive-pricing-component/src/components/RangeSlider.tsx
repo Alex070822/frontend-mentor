@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import "../styles.scss";
+import variables from "../styles.scss";
 
 interface RangeSliderProps {
   sliderRef: React.MutableRefObject<HTMLInputElement | null>;
@@ -22,11 +22,11 @@ const RangeSlider: FC<RangeSliderProps> = ({
     let progress = ((value - min) / (max - min)) * 100;
 
     input.style.background =
-      "linear-gradient(to right, #A4F3EB 0%, #A4F3EB " +
+      `linear-gradient(to right, ${variables.cyan5} 0%, ${variables.cyan5} ` +
       progress +
-      "%, #ECF0FB " +
+      `%, ${variables.blue5} ` +
       value +
-      "%, #ECF0FB 100%)";
+      `%, ${variables.blue5} 100%)`;
   }
 
   return (
