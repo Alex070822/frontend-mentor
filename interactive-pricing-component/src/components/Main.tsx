@@ -3,10 +3,9 @@ import RangeSlider from "./RangeSlider";
 
 function Main() {
   //Range slider
-  const sliderRef = useRef(null);
+  const sliderRef = useRef<HTMLInputElement | null>(null);
   const [sliderValue, setSliderValue] = useState(16);
   const viewsPerDollar = sliderValue * 6.25;
-  console.log(sliderRef);
 
   //Toggle switch
   const [pricing, setPricing] = useState(false);

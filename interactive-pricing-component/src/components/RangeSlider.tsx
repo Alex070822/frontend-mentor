@@ -1,9 +1,10 @@
-import { FC } from "react";
+import React, { FC } from "react";
+import "../styles.scss";
 
 interface RangeSliderProps {
-  sliderRef: any;
+  sliderRef: React.MutableRefObject<HTMLInputElement | null>;
   sliderValue: number;
-  setSliderValue: any;
+  setSliderValue: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const RangeSlider: FC<RangeSliderProps> = ({
@@ -12,7 +13,7 @@ const RangeSlider: FC<RangeSliderProps> = ({
   setSliderValue,
 }) => {
   if (sliderRef.current != null) {
-    const input = sliderRef.current as HTMLInputElement;
+    const input = sliderRef.current;
 
     const value = Number(input.value);
     const min = Number(input.min);

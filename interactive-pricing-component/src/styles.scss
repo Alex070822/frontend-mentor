@@ -1,4 +1,5 @@
 // Variables
+
 $color-blue-1: #293356;
 $color-blue-2: #848EAD;
 $color-blue-3: #BECDFF;
@@ -15,6 +16,10 @@ $color-cyan-5: #A4F3EB;
 
 $color-orange-1: #FF8D68;
 $color-orange-2: #FEEDE8;
+
+:export {
+  cyann: $color-cyan-5;
+}
 
 //Mixins
 @mixin horizontal-center() {
