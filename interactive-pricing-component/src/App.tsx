@@ -22,7 +22,7 @@ function App() {
           target="_blank"
           rel="noreferrer noopener"
         >
-          Your Name Here
+          Alexis González
         </a>
         .
       </footer>
