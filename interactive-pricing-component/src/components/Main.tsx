@@ -24,15 +24,17 @@ function Main() {
 
   return (
     <main>
-      <p className="page-views">{`${viewsPerDollar}K Pageviews`}</p>
-      <div className="amount-per-period">
-        <span className="amount">{`$${
-          !pricing ? monthlyCost.toFixed(2) : annualCost.toFixed(2)
-        }`}</span>
-        <span className="period">/ month</span>
-      </div>
-      <div className="slide-container">
-        <RangeSlider {...{ sliderRef, sliderValue, setSliderValue }} />
+      <div className="mobile-view-order">
+        <p className="page-views">{`${viewsPerDollar}K Pageviews`}</p>
+        <div className="amount-per-period">
+          <span className="amount">{`$${
+            !pricing ? monthlyCost.toFixed(2) : annualCost.toFixed(2)
+          }`}</span>
+          <span className="period">/ month</span>
+        </div>
+        <div className="slide-container">
+          <RangeSlider {...{ sliderRef, sliderValue, setSliderValue }} />
+        </div>
       </div>
       <div className="billing-grouping">
         <div className="toggle-info">

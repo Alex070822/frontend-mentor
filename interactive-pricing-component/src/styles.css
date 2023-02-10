@@ -78,7 +78,7 @@ hr {
 }
 
 .page-views {
-  display: inline-block;
+  display: flex;
   color: #848EAD;
   font-weight: 800;
   font-size: 14px;
@@ -86,6 +86,7 @@ hr {
   text-transform: uppercase;
   vertical-align: 8px;
   margin-left: 46px;
+  margin-top: 58px;
 }
 
 .amount-per-period {
@@ -109,10 +110,16 @@ hr {
   margin-left: 8px;
 }
 
+.mobile-view-order {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
 .slide-container {
   display: flex;
   align-items: center;
   height: 40px;
+  width: 444px;
   margin: 24px 48px 40px 48px;
 }
 
@@ -145,12 +152,10 @@ input[type=range]::-webkit-slider-thumb:active {
   display: flex;
   height: 22px;
   align-items: center;
+  margin-left: 154px;
 }
 
 .toggle-info {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   display: inline-flex;
   align-items: center;
 }
@@ -210,23 +215,16 @@ input[type=checkbox]:checked + .slider:before {
 
 .discount {
   display: inline-flex;
-  height: 19px;
   width: 80px;
-  background: #FEEDE8;
-  color: #FF8D68;
-  font-weight: 800;
-  font-size: 10px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 15px;
-  margin-left: auto;
-  margin-right: 65px;
 }
 
 .discount-mobile {
   display: none;
-  height: 19px;
   width: 42px;
+}
+
+.discount, .discount-mobile {
+  height: 19px;
   background: #FEEDE8;
   color: #FF8D68;
   font-weight: 800;
@@ -306,18 +304,64 @@ input[type=checkbox]:checked + .slider:before {
   .header-bg-img {
     margin-top: 57px;
   }
+  .mobile-view-order {
+    flex-direction: column;
+  }
   .page-views {
-    display: flex;
-    justify-content: center;
+    order: 1;
     font-size: 12px;
-    margin-left: 0;
-    margin-top: 34px;
+    margin: 34px auto 25px auto;
+  }
+  .amount-per-period {
+    margin: 0 auto 34px auto;
+    order: 3;
+  }
+  .amount {
+    font-size: 32px;
+  }
+  .period {
+    font-size: 14px;
+    vertical-align: 6px;
+  }
+  .slide-container {
+    order: 2;
+    width: 279px;
+    margin: 0 24px 24px 24px;
+  }
+  .billing-grouping {
+    margin: 0 auto 38px 44px;
+  }
+  .toggle-details {
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  .switch {
+    margin: 0 12px;
   }
   .discount {
     display: none;
   }
   .discount-mobile {
     display: inline-flex;
+    font-size: 10px;
+    margin-right: 11.5px;
+  }
+  hr {
+    margin: 0 auto 24px auto;
+  }
+  .benefits-grouping {
+    display: flex;
+    flex-direction: column;
+  }
+  .benefits {
+    margin: 0 auto 32px auto;
+  }
+  .checkmark-grouping {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  footer {
+    font-size: 13px;
   }
 }
 
