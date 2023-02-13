@@ -39,14 +39,14 @@ function Main() {
       <div className="billing-grouping">
         <div className="toggle-info">
           <p className="toggle-details">Monthly Billing</p>
-          <span className="switch">
+          <div className="switch">
             <input
               type="checkbox"
               onClick={togglePricing}
               aria-label="toggle-pricing"
             />
             <div className="round slider"></div>
-          </span>
+          </div>
           <p className="toggle-details">Yearly Billing</p>
         </div>
         <p className="discount">25% discount</p>
