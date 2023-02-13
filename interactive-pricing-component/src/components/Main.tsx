@@ -12,7 +12,7 @@ function Main() {
   //Toggle switch
   const [pricing, setPricing] = useState(false);
   const monthlyCost = sliderValue;
-  const annualCost = sliderValue * 12 * 0.75;
+  const annualCost = (sliderValue * (12 * 0.75)) / 12;
 
   function togglePricing() {
     setPricing((prevMode) => !prevMode);
