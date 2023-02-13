@@ -7,25 +7,6 @@ function App() {
     <div className="App">
       <Header />
       <Main />
-      <footer className="attribution">
-        Challenge by{" "}
-        <a
-          href="https://www.frontendmentor.io?ref=challenge"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          Frontend Mentor
-        </a>
-        . Coded by{" "}
-        <a
-          href="https://github.com/Alex070822"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          Alexis González
-        </a>
-        .
-      </footer>
     </div>
   );
 }
