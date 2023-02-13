@@ -43,6 +43,7 @@ const RangeSlider: FC<RangeSliderProps> = ({
       max="32"
       step="2"
       ref={sliderRef}
+      aria-label="Price Slider"
     />
   );
 };
