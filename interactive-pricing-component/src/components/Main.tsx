@@ -33,7 +33,7 @@ function Main() {
           <span className="period">/ month</span>
         </div>
         <div className="slide-container">
-          <RangeSlider value={sliderValue} setValue={setSliderValue} ref={sliderRef} />
+          <RangeSlider {...{ sliderRef, sliderValue, setSliderValue }} />
         </div>
       </div>
       <div className="billing-grouping">
