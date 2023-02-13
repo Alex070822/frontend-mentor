@@ -147,21 +147,6 @@ input[type=range]::-webkit-slider-thumb:active {
   background-repeat: no-repeat;
   filter: drop-shadow(0 15px 30px rgba(0, 255, 231, 0.6));
 }
-input[type=range]::-moz-range-thumb {
-  width: 40px;
-  height: 40px;
-  border: 0;
-  background-color: #10D8C4;
-  border-radius: 20px;
-  cursor: pointer;
-}
-input[type=range]::-moz-range-thumb:active {
-  background-color: #24AEA1;
-  background-image: url("/media/icon-slider.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  filter: drop-shadow(0 15px 30px rgba(0, 255, 231, 0.6));
-}
 
 .billing-grouping {
   display: flex;
