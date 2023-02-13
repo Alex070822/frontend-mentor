@@ -12,7 +12,7 @@ function Main() {
   //Toggle switch
   const [pricing, setPricing] = useState(false);
   const monthlyCost = sliderValue;
-  const annualCost = (sliderValue * (12 * 0.75)) / 12;
+  const annualCost = sliderValue * 12 * 0.75;
 
   function togglePricing() {
     setPricing((prevMode) => !prevMode);
@@ -30,7 +30,7 @@ function Main() {
           <span className="amount">{`$${
             !pricing ? monthlyCost.toFixed(2) : annualCost.toFixed(2)
           }`}</span>
-          <span className="period">/ month</span>
+          <span className="period">{`/ ${!pricing ? "month" : "year"}`}</span>
         </div>
         <div className="slide-container">
           <RangeSlider {...{ sliderRef, sliderValue, setSliderValue }} />
