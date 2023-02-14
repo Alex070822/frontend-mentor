@@ -1,7 +1,37 @@
+// Variables
+
+$color-blue-1: #0E1323;
+$color-blue-2: #1C204B;
+$color-blue-3: #7078C9;
+$color-blue-4: #BBC0FF;
+
+$color-cyan-1: #55C2E6;
+
+$color-orange-1: #FF8B64;
+
+$color-pink-1: #FF5E7D;
+
+$color-green-1: #4BCF82;
+
+$color-magenta-1: #7335D2;
+
+$color-yellow-1: #F1C75B;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Rubik', sans-serif;
+  color: #FFFFFF;
+  background: $color-blue-1;
+}
+
 .attribution {
-  font-size: 11px;
 
   & a {
-    color: hsl(228, 45%, 44%);
+    color: $color-pink-1;
   }
 }

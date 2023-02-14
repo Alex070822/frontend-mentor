@@ -1,8 +1,17 @@
-.attribution {
-  font-size: 11px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+body {
+  font-family: "Rubik", sans-serif;
+  color: #FFFFFF;
+  background: #0E1323;
+}
+
 .attribution a {
-  color: hsl(228deg, 45%, 44%);
+  color: #FF5E7D;
 }
 
 /*# sourceMappingURL=styles.css.map */
