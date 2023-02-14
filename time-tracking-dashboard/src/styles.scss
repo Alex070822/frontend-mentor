@@ -2,8 +2,9 @@
 
 $color-blue-1: #0E1323;
 $color-blue-2: #1C204B;
-$color-blue-3: #7078C9;
-$color-blue-4: #BBC0FF;
+$color-blue-3: #5747EA;
+$color-blue-4: #7078C9;
+$color-blue-5: #BBC0FF;
 
 $color-cyan-1: #55C2E6;
 
@@ -29,7 +30,57 @@ body {
   background: $color-blue-1;
 }
 
+main {
+  display: inline-flex;
+  position: absolute;
+  background-color: #F1C75B;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dashboard-main-container {
+  display: flex;
+  flex-direction: column;
+  background: $color-blue-2;
+  height: 518px;
+  width: 255px;
+  border-radius: 15px;
+}
+
+.dashboard-secondary-container {
+  background: $color-blue-3;
+  height: 354px;
+  width: 255px;
+  border-radius: 15px;
+}
+
+.card-bg {
+  background-color: $color-orange-1;
+  background-image: url("media/icon-work.svg");
+  background-repeat: no-repeat;
+  background-position: 88% -12%;
+  background-origin: content-box;
+  height: 160px;
+  width: 255px;
+  border-radius: 15px;
+}
+
+.card-content {
+  position: absolute;
+  background: $color-blue-2;
+  height: 199px;
+  width: 255px;
+  border-radius: 15px;
+  margin-top: 45px;
+}
+
 .attribution {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 4px;
 
   & a {
     color: $color-pink-1;
