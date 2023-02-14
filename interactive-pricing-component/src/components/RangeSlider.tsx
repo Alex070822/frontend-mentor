@@ -3,15 +3,11 @@ import variables from "../styles.scss";
 
 interface RangeSliderProps {
   sliderRef: React.MutableRefObject<HTMLInputElement | null>;
-  sliderValue: number;
-  setSliderValue: React.Dispatch<React.SetStateAction<number>>;
+  value: number;
+  setValue: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const RangeSlider: FC<RangeSliderProps> = ({
-  sliderRef,
-  sliderValue,
-  setSliderValue,
-}) => {
+const RangeSlider: FC<RangeSliderProps> = ({ sliderRef, value, setValue }) => {
   if (sliderRef.current != null) {
     const input = sliderRef.current;
 
@@ -34,11 +30,11 @@ const RangeSlider: FC<RangeSliderProps> = ({
       onChange={() => {
         if (sliderRef.current != null) {
           const value = Number(sliderRef.current["value"]);
-          setSliderValue(value);
+          setValue(value);
         }
       }}
       type="range"
-      value={sliderValue}
+      value={value}
       min="2"
       max="32"
       step="2"

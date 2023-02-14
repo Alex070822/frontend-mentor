@@ -87,6 +87,89 @@ hr {
   margin-bottom: 32px;
 }
 
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  background: linear-gradient(to right, $color-cyan-5 0%, $color-cyan-5 50%, $color-blue-5 50%, $color-blue-5 100%);
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    background-color: $color-cyan-2;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  &::-webkit-slider-thumb:active {
+    background-color: $color-cyan-1;
+    background-image: url("/media/icon-slider.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 15px 30px rgba(0, 255, 231, 0.6));
+  }
+
+  &::-moz-range-thumb {
+    width: 40px;
+    height: 40px;
+    border: 0;
+    background-color: $color-cyan-2;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  &::-moz-range-thumb:active {
+    background-color: $color-cyan-1;
+    background-image: url("/media/icon-slider.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 15px 30px rgba(0, 255, 231, 0.6));
+  }
+}
+
+input[type=checkbox] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label {
+  cursor: pointer;
+  font-size: 0;
+  width: 43px;
+  height: 22px;
+  background: $color-blue-4;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+  margin: 0 16px;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 14px;
+    height: 14px;
+    background: #FFFFFF;
+    border-radius: 7px;
+    transition: 0.3s;
+  }
+}
+
+input:checked+label {
+  background: $color-cyan-3;
+
+  &:after {
+    left: calc(100% - 4px);
+    transform: translateX(-100%);
+  }
+}
+
 .header-bg-img {
   @include horizontal-center();
   display: flex;
@@ -145,50 +228,6 @@ hr {
   margin: 24px 48px 40px 48px;
 }
 
-input[type="range"] {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 8px;
-  border-radius: 5px;
-  background: linear-gradient(to right, $color-cyan-5 0%, $color-cyan-5 50%, $color-blue-5 50%, $color-blue-5 100%);
-
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 40px;
-    height: 40px;
-    border: 0;
-    background-color: $color-cyan-2;
-    border-radius: 20px;
-    cursor: pointer;
-  }
-
-  &::-webkit-slider-thumb:active {
-    background-color: $color-cyan-1;
-    background-image: url("/media/icon-slider.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: drop-shadow(0 15px 30px rgba(0, 255, 231, 0.6));
-  }
-
-  &::-moz-range-thumb {
-    width: 40px;
-    height: 40px;
-    border: 0;
-    background-color: $color-cyan-2;
-    border-radius: 20px;
-    cursor: pointer;
-  }
-
-  &::-moz-range-thumb:active {
-    background-color: $color-cyan-1;
-    background-image: url("/media/icon-slider.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: drop-shadow(0 15px 30px rgba(0, 255, 231, 0.6));
-  }
-}
-
 .billing-grouping {
   display: flex;
   height: 22px;
@@ -206,60 +245,6 @@ input[type="range"] {
   color: $color-blue-2;
   font-weight: 600;
   font-size: 12px;
-}
-
-.switch {
-  position: relative;
-  display: inline-block;
-  height: 22px;
-  width: 43px;
-  margin: 0 16px;
-
-  input {
-    opacity: 0;
-    height: 0;
-    width: 0;
-  }
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top:0 ;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: $color-blue-4;
-
-  &:before {
-    position: absolute;
-    content: "";
-    height: 14px;
-    width: 14px;
-    left: 4px;
-    bottom: 4px;
-    background: #FFFFFF;
-    transition: transform 400ms ease;
-  }
-
-  &.round {
-    border-radius: 15px;
-  }
-
-  &.round:before {
-    border-radius: 50%;
-  }
-}
-
-input[type="checkbox"]{
-
-  &:checked + .slider {
-    background: $color-cyan-3;
-  }
-
-  &:checked + .slider:before {
-    transform: translateX(20px);
-  }
 }
 
 .discount {
@@ -358,6 +343,18 @@ input[type="checkbox"]{
     margin-top: 234px;
   }
 
+  label {
+    margin: 0 12px;
+  }
+
+  hr {
+    margin: 0 auto 24px auto;
+  }
+
+  footer {
+    font-size: 13px;
+  }
+
   .header-bg-img {
     margin-top: 57px;
   }
@@ -401,10 +398,6 @@ input[type="checkbox"]{
     white-space: nowrap;
   }
 
-  .switch {
-    margin: 0 12px;
-  }
-
   .discount {
     display: none;
   }
@@ -413,10 +406,6 @@ input[type="checkbox"]{
     display: inline-flex;
     font-size: 10px;
     margin-right: 11.5px;
-  }
-
-  hr {
-    margin: 0 auto 24px auto;
   }
 
   .benefits-grouping {
@@ -433,7 +422,4 @@ input[type="checkbox"]{
     margin-right: auto;
   }
 
-  footer {
-    font-size: 13px;
-  }
 }
