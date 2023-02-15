@@ -1,8 +1,24 @@
-function Card() {
+import { FC } from "react";
+
+interface CardProps {
+  title: string;
+  bgColor: string;
+  bgImg: string;
+}
+
+const Card: FC<CardProps> = ({ title, bgColor, bgImg }) => {
+  let bgImgUrl = require(`../media/icon-play.svg`).default;
+
   return (
-    <div className="card-bg">
+    <div
+      className="card-bg"
+      style={{
+        backgroundImage: `url(${bgImgUrl})`,
+        backgroundColor: `${bgColor}`,
+      }}
+    >
       <div className="card-content">
-        <h3>Work</h3>
+        <h3>{title}</h3>
         <h1>32hrs (weekly)</h1>
         <p className="previous-time">36hrs (weekly)</p>
         5hrs (daily) Previous - 7hrs (daily) Previous - 103hrs (monthly)
@@ -10,7 +26,7 @@ function Card() {
       </div>
     </div>
   );
-}
+};
 
 // Play 1hr
 //         (daily) Previous - 2hrs (daily) 10hrs (weekly) Previous - 8hrs (weekly)

@@ -19,20 +19,53 @@ main {
   transform: translate(-50%, -50%);
 }
 
-.dashboard-main-container {
+h2 {
+  font-weight: 300;
+  font-size: 40px;
+}
+
+.dashboard-main-container, .dashboard-secondary-container {
   display: flex;
   flex-direction: column;
-  background: #1C204B;
-  height: 518px;
+}
+
+.dashboard-main-container, .dashboard-secondary-container, .card-bg, .card-content {
   width: 255px;
   border-radius: 15px;
+}
+
+.dashboard-main-container {
+  background: #1C204B;
+  height: 518px;
+  margin-right: 30px;
 }
 
 .dashboard-secondary-container {
   background: #5747EA;
   height: 354px;
-  width: 255px;
-  border-radius: 15px;
+  padding-left: 32px;
+}
+
+.profile-img {
+  height: 78px;
+  width: 78px;
+  border: 3px solid #FFFFFF;
+  border-radius: 39px;
+  margin: 37px 0 43px 0;
+}
+
+.report-title {
+  font-weight: 400;
+  font-size: 15px;
+  color: #BBC0FF;
+  margin-bottom: 3px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 825px;
 }
 
 .card-bg {
@@ -42,16 +75,12 @@ main {
   background-position: 88% -12%;
   background-origin: content-box;
   height: 160px;
-  width: 255px;
-  border-radius: 15px;
 }
 
 .card-content {
   position: absolute;
   background: #1C204B;
   height: 199px;
-  width: 255px;
-  border-radius: 15px;
   margin-top: 45px;
 }
 

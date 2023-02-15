@@ -1,9 +1,13 @@
 function UserDashboard() {
+  const profileImg = require("../media/image-jeremy.png");
+
   return (
     <div className="dashboard-main-container">
-      <h2 className="dashboard-secondary-container">
-        Report for Jeremy Robson
-      </h2>
+      <div className="dashboard-secondary-container">
+        <img src={profileImg} alt="profile img" className="profile-img" />
+        <p className="report-title">Report for</p>
+        <h2>Jeremy Robson</h2>
+      </div>
       Daily Weekly Monthly
     </div>
   );
