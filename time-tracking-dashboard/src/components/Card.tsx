@@ -1,4 +1,5 @@
 import { FC } from "react";
+import variables from "../styles.scss";
 
 interface CardProps {
   title: string;
@@ -13,8 +14,8 @@ const Card: FC<CardProps> = ({ title, bgColor, bgImg }) => {
     <div
       className="card-bg"
       style={{
-        backgroundImage: `url(${bgImgUrl})`,
         backgroundColor: `${bgColor}`,
+        backgroundImage: `url(${bgImgUrl})`,
       }}
     >
       <div className="card-content">
