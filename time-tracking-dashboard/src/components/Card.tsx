@@ -1,5 +1,4 @@
 import { FC } from "react";
-import variables from "../styles.scss";
 
 interface CardProps {
   title: string;
@@ -9,13 +8,12 @@ interface CardProps {
 
 const Card: FC<CardProps> = ({ title, bgColor, bgImg }) => {
   let bgImgUrl = require(`../media/icon-play.svg`).default;
-  console.log(bgColor);
 
   return (
     <div
       className="card-bg"
       style={{
-        backgroundColor: `${variables.`${bgColor}`}`,
+        backgroundColor: `${bgColor}`,
         backgroundImage: `url(${bgImgUrl})`,
       }}
     >
