@@ -1,3 +1,12 @@
+:export {
+  colorCyan1: #55C2E6;
+  colorOrange1: #FF8B64;
+  colorPink1: #FF5E7D;
+  colorGreen1: #4BCF82;
+  colorMagenta1: #7335D2;
+  colorYellow1: #F1C75B;
+}
+
 * {
   margin: 0;
   padding: 0;

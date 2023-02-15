@@ -9,12 +9,13 @@ interface CardProps {
 
 const Card: FC<CardProps> = ({ title, bgColor, bgImg }) => {
   let bgImgUrl = require(`../media/icon-play.svg`).default;
+  console.log(bgColor);
 
   return (
     <div
       className="card-bg"
       style={{
-        backgroundColor: `${bgColor}`,
+        backgroundColor: `${variables.`${bgColor}`}`,
         backgroundImage: `url(${bgImgUrl})`,
       }}
     >

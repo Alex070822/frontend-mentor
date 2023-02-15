@@ -18,6 +18,15 @@ $color-magenta-1: #7335D2;
 
 $color-yellow-1: #F1C75B;
 
+:export {
+  colorCyan1: $color-cyan-1;
+  colorOrange1: $color-orange-1;
+  colorPink1: $color-pink-1;
+  colorGreen1: $color-green-1;
+  colorMagenta1: $color-magenta-1;
+  colorYellow1: $color-yellow-1;
+}
+
 * {
   margin: 0;
   padding: 0;
