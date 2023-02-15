@@ -2,9 +2,10 @@
 
 $color-blue-1: #0E1323;
 $color-blue-2: #1C204B;
-$color-blue-3: #5747EA;
-$color-blue-4: #7078C9;
-$color-blue-5: #BBC0FF;
+$color-blue-3: #33397A;
+$color-blue-4: #5747EA;
+$color-blue-5: #7078C9;
+$color-blue-6: #BBC0FF;
 
 $color-cyan-1: #55C2E6;
 
@@ -47,9 +48,20 @@ main {
   transform: translate(-50%, -50%);
 }
 
+h1 {
+  font-weight: 300;
+  font-size: 56px;
+  margin-bottom: 8px;
+}
+
 h2 {
   font-weight: 300;
   font-size: 40px;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 18px;
 }
 
 .dashboard-main-container, .dashboard-secondary-container {
@@ -69,7 +81,7 @@ h2 {
 }
 
 .dashboard-secondary-container {
-  background: $color-blue-3;
+  background: $color-blue-4;
   height: 354px;
   padding-left: 32px;
 }
@@ -85,7 +97,7 @@ h2 {
 .report-title {
   font-weight: 400;
   font-size: 15px;
-  color: $color-blue-5;
+  color: $color-blue-6;
   margin-bottom: 3px;
 }
 
@@ -110,6 +122,35 @@ h2 {
   background: $color-blue-2;
   height: 199px;
   margin-top: 45px;
+  padding: 29px 35px 0 30px;
+
+  &:hover {
+    background: $color-blue-3;
+  }
+}
+
+.card-btn-align {
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.card-btn {
+  display: flex;
+  cursor: pointer;
+  padding-bottom: 3px;
+  align-self: center;
+  margin-left: auto;
+  margin-right: 0;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.previous-time {
+  font-weight: 400;
+  font-size: 15px;
+  color: $color-blue-6;
 }
 
 .attribution {

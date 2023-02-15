@@ -27,9 +27,20 @@ main {
   transform: translate(-50%, -50%);
 }
 
+h1 {
+  font-weight: 300;
+  font-size: 56px;
+  margin-bottom: 8px;
+}
+
 h2 {
   font-weight: 300;
   font-size: 40px;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 18px;
 }
 
 .dashboard-main-container, .dashboard-secondary-container {
@@ -90,6 +101,33 @@ h2 {
   background: #1C204B;
   height: 199px;
   margin-top: 45px;
+  padding: 29px 35px 0 30px;
+}
+.card-content:hover {
+  background: #33397A;
+}
+
+.card-btn-align {
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.card-btn {
+  display: flex;
+  cursor: pointer;
+  padding-bottom: 3px;
+  align-self: center;
+  margin-left: auto;
+  margin-right: 0;
+}
+.card-btn:hover {
+  opacity: 0.7;
+}
+
+.previous-time {
+  font-weight: 400;
+  font-size: 15px;
+  color: #BBC0FF;
 }
 
 .attribution {
