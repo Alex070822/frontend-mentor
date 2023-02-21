@@ -121,7 +121,7 @@ h3 {
   margin-right: 0;
 }
 .card-btn:hover {
-  opacity: 0.7;
+  filter: brightness(0) invert(1);
 }
 
 .previous-time {
@@ -131,6 +131,7 @@ h3 {
 }
 
 .attribution {
+  font-weight: 500;
   position: fixed;
   bottom: 0;
   left: 50%;

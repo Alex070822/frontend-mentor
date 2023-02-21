@@ -1,17 +1,13 @@
 import "./styles.scss";
 import UserDashboard from "./components/UserDashboard";
 import Card from "./components/Card";
-import cardLayoutData from "./data/cardLayoutData";
+import data from "./data/data";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
-  const card = cardLayoutData.map((item) => {
+  const card = data.map((item) => {
     return (
-      <Card
-        key={item.id}
-        title={item.title}
-        bgColor={item.bgColor}
-        bgImg={item.bgImg}
-      />
+      <Card title={item.title} timeframes={item.timeframes} key={uuidv4()} />
     );
   });
 
