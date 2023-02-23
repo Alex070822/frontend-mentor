@@ -39,10 +39,22 @@ function App() {
       <footer>
         <div className="attribution">
           Challenge by{" "}
-          <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
+          <a
+            href="https://www.frontendmentor.io/challenges/time-tracking-dashboard-UIQ7167Jw"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             Frontend Mentor
           </a>
-          . Coded by <a href="#">Your Name Here</a>.
+          . Coded by{" "}
+          <a
+            href="https://www.linkedin.com/in/alexis-glez-h"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Alexis González
+          </a>
+          .
         </div>
       </footer>
     </div>
