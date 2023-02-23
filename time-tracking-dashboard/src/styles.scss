@@ -197,3 +197,95 @@ h3 {
     color: $color-pink-1;
   }
 }
+
+@media screen and (max-width: 375px){
+  main {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+  }
+
+  h1 {
+    font-size: 32px;
+    margin-bottom: 0;
+  }
+
+  h2 {
+    font-size: 24px;
+    margin: 0 0 41px 84px;
+  }
+
+  .dashboard-main-container, .dashboard-secondary-container, .card-container, .card-bg, .card-content {
+    width: 327px;
+  }
+
+  .dashboard-main-container {
+    height: 203px;
+    margin: 81px auto 24px auto;
+  }
+
+  .dashboard-secondary-container {
+    height: 133px;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .profile-img {
+    position: absolute;
+    height: 64px;
+    width: 64px;
+    border-radius: 32px;
+    margin: 35px 0 auto 0;
+  }
+
+  .report-title {
+    margin: 42px 0 4px 84px;
+  }
+
+  .dashboard-tab {
+    flex-direction: row;
+    column-gap: 50px;
+    justify-content: center;
+  }
+
+  .dashboard-btn, .selected-dashboard-btn {
+    padding: 0;
+  }
+
+  .card-container {
+    height: auto;
+    margin: 0 auto 0 auto;
+    gap: 24px 0;
+  }
+
+  .card-content {
+    display: flex;
+    flex-wrap: wrap;
+    height: 122px;
+    margin-top: 38px;
+    padding: 28px 24px;
+  }
+
+  .card-btn-align {
+    margin-bottom: 7px;
+    width: 279px;
+  }
+
+  .previous-time {
+    padding: 10px 0;
+    margin: 0 0 0 auto;
+  }
+
+  .attribution {
+    width: 250px;
+    position: relative;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 24px 0;
+    text-align: center;
+  }
+}

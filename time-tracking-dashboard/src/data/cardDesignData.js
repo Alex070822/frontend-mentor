@@ -1,4 +1,4 @@
-let cardLayoutData = [
+let cardDesignData = [
   {
     id: 1,
     bgColor: "#FF8B64",
@@ -31,4 +31,4 @@ let cardLayoutData = [
   },
 ];
 
-export default cardLayoutData;
+export default cardDesignData;
