@@ -63,6 +63,7 @@ h3 {
   background: #5747EA;
   height: 354px;
   padding-left: 32px;
+  margin-bottom: 26px;
 }
 
 .profile-img {
@@ -78,6 +79,34 @@ h3 {
   font-size: 15px;
   color: #BBC0FF;
   margin-bottom: 3px;
+}
+
+.dashboard-tab {
+  display: flex;
+  flex-direction: column;
+  row-gap: 21px;
+}
+
+.dashboard-btn, .selected-dashboard-btn {
+  display: flex;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding-left: 32px;
+}
+
+.dashboard-btn {
+  color: #7078C9;
+}
+.dashboard-btn:hover {
+  color: #FFFFFF;
+}
+
+.selected-dashboard-btn {
+  color: #FFFFFF;
 }
 
 .card-container {
@@ -105,6 +134,7 @@ h3 {
 }
 .card-content:hover {
   background: #33397A;
+  cursor: pointer;
 }
 
 .card-btn-align {

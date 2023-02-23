@@ -84,6 +84,7 @@ h3 {
   background: $color-blue-4;
   height: 354px;
   padding-left: 32px;
+  margin-bottom: 26px;
 }
 
 .profile-img {
@@ -99,6 +100,36 @@ h3 {
   font-size: 15px;
   color: $color-blue-6;
   margin-bottom: 3px;
+}
+
+.dashboard-tab {
+  display: flex;
+  flex-direction: column;
+  row-gap: 21px;
+}
+
+
+.dashboard-btn, .selected-dashboard-btn {
+  display: flex;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding-left: 32px;
+}
+
+.dashboard-btn {
+  color: $color-blue-5;
+
+  &:hover {
+    color: #FFFFFF;
+  }
+}
+
+.selected-dashboard-btn {
+  color: #FFFFFF;
 }
 
 .card-container {
@@ -126,6 +157,7 @@ h3 {
 
   &:hover {
     background: $color-blue-3;
+    cursor: pointer;
   }
 }
 
