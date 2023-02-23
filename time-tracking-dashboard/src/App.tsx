@@ -1,24 +1,28 @@
 import "./styles.scss";
+import { useState } from "react";
 import UserDashboard from "./components/UserDashboard";
 import Card from "./components/Card";
+import MapActivity from "./components/MapActivity";
 import data from "./data/data";
 import { v4 as uuidv4 } from "uuid";
-import { useState } from "react";
 
 function App() {
   const [dailyHours, setDailyHours] = useState(false);
   const [weeklyHours, setWeeklyHours] = useState(true);
   const [monthlyHours, setMonthlyHours] = useState(false);
 
-  const card = data.map((item) => {
+  const activities = data.map(MapActivity);
+  const card = activities.map((activity) => {
     return (
       <Card
-        title={item.title}
-        timeframes={item.timeframes}
+        title={activity.title}
+        timeframes={activity.timeframes}
         key={uuidv4()}
         dailyHours={dailyHours}
         weeklyHours={weeklyHours}
         monthlyHours={monthlyHours}
+        bgColor={activity.bgColor}
+        bgImg={activity.bgImg}
       />
     );
   });

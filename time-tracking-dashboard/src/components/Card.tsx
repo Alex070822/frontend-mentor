@@ -1,5 +1,4 @@
 import { FC } from "react";
-import variables from "../styles.scss";
 
 interface Daily {
   current: number;
@@ -29,6 +28,8 @@ interface CardProps {
   dailyHours: boolean;
   weeklyHours: boolean;
   monthlyHours: boolean;
+  bgColor: string;
+  bgImg: string;
 }
 
 const Card: FC<CardProps> = ({
@@ -37,16 +38,17 @@ const Card: FC<CardProps> = ({
   dailyHours,
   weeklyHours,
   monthlyHours,
+  bgColor,
+  bgImg,
 }) => {
   let btnImg = require(`../media/icon-ellipsis.svg`).default;
-  let work = require(`../media/icon-work.svg`).default;
 
   return (
     <div
       className="card-bg"
       style={{
-        backgroundColor: `${variables.colorOrange1}`,
-        backgroundImage: `url(${work})`,
+        backgroundColor: bgColor,
+        backgroundImage: `url(/img/${bgImg})`,
       }}
     >
       <div className="card-content">
@@ -62,8 +64,7 @@ const Card: FC<CardProps> = ({
         <p className="previous-time">
           {dailyHours && `Yesterday - ${timeframes.daily.previous}hrs`}
           {weeklyHours && `Last Week - ${timeframes.weekly.previous}hrs`}
-          {monthlyHours &&
-            `Last Month - ${timeframes.monthly.previous}hrs`}
+          {monthlyHours && `Last Month - ${timeframes.monthly.previous}hrs`}
         </p>
       </div>
     </div>
