@@ -26,17 +26,17 @@ interface CardProps {
   title: string;
   timeframes: Timeframes;
   key: string;
-  displayDailyHours: boolean;
-  displayWeeklyHours: boolean;
-  displayMonthlyHours: boolean;
+  dailyHours: boolean;
+  weeklyHours: boolean;
+  monthlyHours: boolean;
 }
 
 const Card: FC<CardProps> = ({
   title,
   timeframes,
-  displayDailyHours,
-  displayWeeklyHours,
-  displayMonthlyHours,
+  dailyHours,
+  weeklyHours,
+  monthlyHours,
 }) => {
   let btnImg = require(`../media/icon-ellipsis.svg`).default;
   let work = require(`../media/icon-work.svg`).default;
@@ -55,14 +55,14 @@ const Card: FC<CardProps> = ({
           <img src={btnImg} alt="Card button" className="card-btn" />
         </div>
         <h1>
-          {displayDailyHours && timeframes.daily.current}
-          {displayWeeklyHours && timeframes.weekly.current}
-          {displayMonthlyHours && timeframes.monthly.current}hrs
+          {dailyHours && timeframes.daily.current}
+          {weeklyHours && timeframes.weekly.current}
+          {monthlyHours && timeframes.monthly.current}hrs
         </h1>
         <p className="previous-time">
-          {displayDailyHours && `Yesterday - ${timeframes.daily.previous}hrs`}
-          {displayWeeklyHours && `Last Week - ${timeframes.weekly.previous}hrs`}
-          {displayMonthlyHours &&
+          {dailyHours && `Yesterday - ${timeframes.daily.previous}hrs`}
+          {weeklyHours && `Last Week - ${timeframes.weekly.previous}hrs`}
+          {monthlyHours &&
             `Last Month - ${timeframes.monthly.previous}hrs`}
         </p>
       </div>

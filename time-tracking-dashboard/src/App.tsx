@@ -16,9 +16,9 @@ function App() {
         title={item.title}
         timeframes={item.timeframes}
         key={uuidv4()}
-        displayDailyHours={dailyHours}
-        displayWeeklyHours={weeklyHours}
-        displayMonthlyHours={monthlyHours}
+        dailyHours={dailyHours}
+        weeklyHours={weeklyHours}
+        monthlyHours={monthlyHours}
       />
     );
   });
