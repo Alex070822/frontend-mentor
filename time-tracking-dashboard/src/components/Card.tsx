@@ -53,7 +53,7 @@ const Card: FC<CardProps> = ({
     >
       <div className="card-content">
         <div className="card-btn-align">
-          <h3>{title}</h3>
+          <p className="activity-title">{title}</p>
           <img src={btnImg} alt="Card button" className="card-btn" />
         </div>
         <h1>

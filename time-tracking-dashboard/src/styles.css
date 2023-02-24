@@ -38,11 +38,6 @@ h2 {
   font-size: 40px;
 }
 
-h3 {
-  font-weight: 500;
-  font-size: 18px;
-}
-
 .dashboard-main-container, .dashboard-secondary-container {
   display: flex;
   flex-direction: column;
@@ -139,6 +134,11 @@ h3 {
 .card-btn-align {
   display: flex;
   margin-bottom: 24px;
+}
+
+.activity-title {
+  font-weight: 500;
+  font-size: 18px;
 }
 
 .card-btn {
