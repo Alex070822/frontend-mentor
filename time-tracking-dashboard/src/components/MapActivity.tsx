@@ -1,8 +1,29 @@
 import variables from "../styles.scss";
 
+interface Daily {
+  current: number;
+  previous: number;
+}
+
+interface Weekly {
+  current: number;
+  previous: number;
+}
+
+interface Monthly {
+  current: number;
+  previous: number;
+}
+
+interface Timeframes {
+  daily: Daily;
+  weekly: Weekly;
+  monthly: Monthly;
+}
+
 interface RowActivity {
   title: string;
-  timeframes: any;
+  timeframes: Timeframes;
 }
 
 interface Activity extends RowActivity {
