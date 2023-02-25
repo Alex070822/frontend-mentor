@@ -1,6 +1,12 @@
 //Variables
 
+$color-white-1: #FFFFFF;
+
+$color-gray-1: #FFFFFF33;
+$color-gray-2: #FFFFFF7F;
+
 $color-blue-1: #070724;
+
 
 * {
   margin: 0;
@@ -10,20 +16,50 @@ $color-blue-1: #070724;
 
 body {
   font-family: 'Antonio', sans-serif;
-  //font-family: 'League Spartan', sans-serif;
-  color: #FFFFFF;
+  color: $color-white-1;
   background-color: $color-blue-1;
   background-image: url("./media/background-stars.svg");
 }
 
+a:visited {
+  color: $color-gray-1;
+}
+
+.header-menu-img, .main-info-menu-btn {
+  cursor: pointer;
+}
+
+.main-info-menu-btn {
+  background: none;
+  color: inherit;
+  border: none;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.main-info-menu-btn-mobile {
+  display: none;
+}
+
 @media screen and (max-width: 375px) {
+
+  body {
+    background-size: cover;
+  }
 
   header {
     display: flex;
     align-items: center;
     height: 68px;
-    padding: 16px 24px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0 24px;
+  }
+
+  main {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .header-title {
@@ -34,6 +70,127 @@ body {
   .header-menu-img {
     height: 17px;
     width: 24px;
+    margin: 0 0 0 auto;
+  }
+
+  .main-info-menu {
+    display: flex;
+    height: 52px;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 24px;
+    border-top: 1px solid $color-gray-1;
+    border-bottom: 1px solid $color-gray-1;
+  }
+
+  .main-info-menu-btn {
+    display: none;
+  }
+
+  .main-info-menu-btn-mobile {
+    display: flex;
+    background: none;
+    color: $color-gray-2;
+    border: none;
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+  }
+
+  .planet-img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 304px;
+  }
+
+  .planet-img {
+    height: 36.514%;
+    width: 29.6%;
+  }
+
+  .planet-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 235px;
+    width: 327px;
+    margin-bottom: 28px;
+  }
+
+  .planet-name {
+    font-weight: 400;
+    font-size: 40px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .planet-info {
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+    line-height: 22px;
+    margin-bottom: 32px;
+  }
+
+  .planet-info-source-group {
+    display: flex;
+    color: $color-gray-2;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 15px;
+  }
+
+  .source-title {
+    font-weight: 400;
+  }
+
+  .source-link {
+    color: $color-gray-2;
+    font-weight: 700;
+    margin-right: 4px;
+  }
+
+  .source-icon {
+    height: 12px;
+    width: 12px;
+    align-self: flex-end;
+  }
+
+  .planet-details-group {
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+    row-gap: 8px;
+    margin-bottom: 28px;
+
+  }
+
+  .planet-details {
+    display: flex;
+    width: 327px;
+    height: 48px;
+    align-items: center;
+    border: 1px solid $color-gray-1;
+    padding: 0 24px;
+  }
+
+  .data-title {
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    color: $color-gray-2;
+    letter-spacing: 0.727273px;
+  }
+
+  .data {
+    font-weight: 400;
+    font-size: 20px;
     margin: 0 0 0 auto;
   }
 }
