@@ -133,7 +133,6 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 235px;
   width: 87.2%;
   margin-bottom: 28px;
 
@@ -158,6 +157,9 @@ main {
     color: $color-gray-2;
     font-family: 'League Spartan', sans-serif;
     font-size: 15px;
+    line-height: 25px;
+    align-items: center;
+    justify-content: center;
 
     &-title {
       font-weight: 400;
@@ -173,6 +175,7 @@ main {
       height: 12px;
       width: 12px;
       align-self: flex-end;
+      margin: auto;
     }
   }
 }
@@ -214,21 +217,16 @@ main {
   margin: 0 auto 14px auto;
   text-align: center;
   font-size: 15px;
-  width: 100%
+  width: 87.2%;
 }
 
 #nav-checkbox:checked ~ ul.nav-menu {
   display: flex;
 }
 
-#nav-checkbox:checked ~ label.nav-toggle .nav-toggle-close {
-
+#nav-checkbox:checked ~ label.nav-toggle .nav-toggle-menu {
   display: flex;
   opacity: 0.25;
-}
-
-#nav-checkbox:checked ~ label.nav-toggle .nav-toggle-menu {
-  display: none;
 }
 
 @media screen and (min-width: 376px) {
