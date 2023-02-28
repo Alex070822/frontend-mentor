@@ -8,10 +8,10 @@ function Main() {
     <main>
       <div className="main-info-menu">
         <button className="main-info-menu-btn">Overview</button>
-        <button className="main-info-menu-btn-mobile">Overview</button>
         <button className="main-info-menu-btn">Internal Structure</button>
-        <button className="main-info-menu-btn-mobile">Structure</button>
         <button className="main-info-menu-btn">Surface Geology</button>
+        <button className="main-info-menu-btn-mobile">Overview</button>
+        <button className="main-info-menu-btn-mobile">Structure</button>
         <button className="main-info-menu-btn-mobile">Surface</button>
       </div>
       <div className="planet-img-container">

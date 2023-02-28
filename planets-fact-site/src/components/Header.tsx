@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import Navbar from "./Navbar";
 
 function Header() {
-  const headerMenuImg = require("../media/icon-hamburger.svg").default;
+  const [displayNavbar, setDisplayNavbar] = useState(false);
+
+  function toggleNavbar() {
+    setDisplayNavbar((prevMode) => !prevMode);
+  }
 
   return (
     <header>
       <div className="header-title">THE PLANETS</div>
-      <img src={headerMenuImg} alt="header menu" className="header-menu-img" />
+      <button className="header-menu-btn" onClick={toggleNavbar}></button>
+      <Navbar displayNavbar={displayNavbar} />
     </header>
   );
 }

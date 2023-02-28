@@ -33,6 +33,10 @@ a:visited {
   display: none;
 }
 
+.attribution a {
+  color: #419EBB;
+}
+
 @media screen and (max-width: 375px) {
   body {
     background-size: cover;
@@ -52,10 +56,28 @@ a:visited {
     font-weight: 400;
     font-size: 28px;
   }
-  .header-menu-img {
+  .header-menu-btn {
+    background-image: url("./media/icon-hamburger.svg");
+    background-color: transparent;
+    border: none;
     height: 17px;
     width: 24px;
     margin: 0 0 0 auto;
+  }
+  .hide-navbar {
+    display: none;
+  }
+  .mobile-navbar {
+    position: absolute;
+    top: 69px;
+    left: 0;
+    background: red;
+    width: 100%;
+    padding-top: 24px;
+  }
+  .mobile-navbar-btn {
+    height: 65px;
+    width: 100%;
   }
   .main-info-menu {
     display: flex;
@@ -160,6 +182,12 @@ a:visited {
     font-weight: 400;
     font-size: 20px;
     margin: 0 0 0 auto;
+  }
+  .attribution {
+    margin: 0 auto 14px auto;
+    text-align: center;
+    font-size: 15px;
+    width: 327px;
   }
 }
 
