@@ -1,17 +1,22 @@
-import React, { FC } from "react";
+import React from "react";
 
-interface NavbarProps {
-  displayNavbar: boolean;
-}
+function Navbar() {
+  const navbarIcon = require("../media/icon-hamburger.svg").default;
 
-const Navbar: FC<NavbarProps> = ({ displayNavbar }) => {
   return (
-    <nav>
-      <div className={!displayNavbar ? "hide-navbar" : "mobile-navbar"}>
-        <button className="mobile-navbar-btn">MERCURY</button>
-      </div>
+    <nav className="nav">
+      <input type="checkbox" className="nav-checkbox" id="nav-checkbox" />
+      <label htmlFor="nav-checkbox" className="nav-toggle">
+        <img src={navbarIcon} alt="Navbar icon" className="nav-toggle-menu" />
+        <img src={navbarIcon} alt="Navbar icon" className="nav-toggle-close" />
+      </label>
+      <ul className="nav-menu">
+        <li>
+          <a href="">a</a>
+        </li>
+      </ul>
     </nav>
   );
-};
+}
 
 export default Navbar;

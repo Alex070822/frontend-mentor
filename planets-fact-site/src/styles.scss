@@ -16,11 +16,14 @@ $color-saturn-red: #CD5120;
 $color-uranus-cyan: #1EC1A2;
 $color-neptune-blue: #2D68F0;
 
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+a:visited {
+  color: $color-gray-1;
 }
 
 body {
@@ -28,102 +31,77 @@ body {
   color: $color-white-1;
   background-color: $color-blue-1;
   background-image: url("./media/background-stars.svg");
+  background-size: cover;
 }
 
-a:visited {
-  color: $color-gray-1;
+header {
+  display: flex;
+  align-items: center;
+  height: 68px;
+  padding: 0 24px;
 }
 
-.header-menu-img, .main-info-menu-btn {
-  cursor: pointer;
+main {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.main-info-menu-btn {
-  background: none;
-  color: inherit;
-  border: none;
-  font-family: 'League Spartan', sans-serif;
-  font-weight: 700;
-  font-size: 11px;
-  text-transform: uppercase;
+.header-title {
+  font-weight: 400;
+  font-size: 28px;
 }
 
-.main-info-menu-btn-mobile {
-  display: none;
-}
+.nav {
+  margin: 0 0 0 auto;
 
-.attribution {
-  & a {
-    color: $color-mercury-cyan;
-  }
-}
-
-@media screen and (max-width: 375px) {
-
-  body {
-    background-size: cover;
-  }
-
-  header {
-    display: flex;
-    align-items: center;
-    height: 68px;
-    padding: 0 24px;
-  }
-
-  main {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .header-title {
-    font-weight: 400;
-    font-size: 28px;
-  }
-
-  .header-menu-btn {
-    background-image: url("./media/icon-hamburger.svg");
-    background-color: transparent;
-    border: none;
-    height: 17px;
-    width: 24px;
-    margin: 0 0 0 auto;
-  }
-
-  .hide-navbar {
+  &-checkbox {
     display: none;
   }
 
-  .mobile-navbar {
+  &-toggle {
+    cursor: pointer;
+
+    &-close {
+      display: none;
+    }
+  }
+
+  &-menu {
+    display: none;
+    flex-direction: column;
     position: absolute;
     top: 69px;
     left: 0;
-    background: red;
-    width: 100%;
-    padding-top: 24px;
-  }
+    width: 100vw;
+    padding: 24px 0 47px 0;
+    background: #1EC1A2;
 
-  .mobile-navbar-btn {
-    height: 65px;
-    width: 100%;
-  }
+    li {
+      list-style: none;
+      padding: 20px 32px;
+      background: #CD5120;
+    }
 
-  .main-info-menu {
-    display: flex;
-    height: 52px;
-    width: 100%;
-    justify-content: space-between;
-    padding: 0 24px;
-    border-top: 1px solid $color-gray-1;
-    border-bottom: 1px solid $color-gray-1;
+    a {
+      text-decoration: none;
+      font-family: 'League Spartan', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+    }
   }
+}
 
-  .main-info-menu-btn {
-    display: none;
-  }
+.main-info-menu {
+  display: flex;
+  height: 52px;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 24px;
+  border-top: 1px solid $color-gray-1;
+  border-bottom: 1px solid $color-gray-1;
 
-  .main-info-menu-btn-mobile {
+  &-btn {
     display: flex;
     background: none;
     color: $color-gray-2;
@@ -136,37 +114,37 @@ a:visited {
     justify-content: center;
     width: 80px;
   }
+}
 
-  .planet-img-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 304px;
-  }
+.planet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 304px;
 
-  .planet-img {
-    height: 36.514%;
+  &-img {
+    aspect-ratio: 1 / 1;
     width: 29.6%;
   }
+}
 
-  .planet-info-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 235px;
-    width: 327px;
-    margin-bottom: 28px;
-  }
+.general-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 235px;
+  width: 87.2%;
+  margin-bottom: 28px;
 
-  .planet-name {
+  &-name {
     font-weight: 400;
     font-size: 40px;
     text-transform: uppercase;
     margin-bottom: 16px;
   }
 
-  .planet-info {
+  &-summary {
     font-family: 'League Spartan', sans-serif;
     font-weight: 400;
     font-size: 14px;
@@ -175,65 +153,94 @@ a:visited {
     margin-bottom: 32px;
   }
 
-  .planet-info-source-group {
+  &-source {
     display: flex;
     color: $color-gray-2;
     font-family: 'League Spartan', sans-serif;
     font-size: 15px;
-  }
 
-  .source-title {
-    font-weight: 400;
-  }
+    &-title {
+      font-weight: 400;
+    }
 
-  .source-link {
-    color: $color-gray-2;
-    font-weight: 700;
-    margin-right: 4px;
-  }
+    &-link {
+      color: $color-gray-2;
+      font-weight: 700;
+      margin-right: 4px;
+    }
 
-  .source-icon {
-    height: 12px;
-    width: 12px;
-    align-self: flex-end;
+    &-icon {
+      height: 12px;
+      width: 12px;
+      align-self: flex-end;
+    }
   }
+}
 
-  .planet-details-group {
+.details {
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+  row-gap: 8px;
+  width: 100%;
+  margin-bottom: 28px;
+
+  &-item {
     display: flex;
-    flex-direction: column;
-    text-transform: uppercase;
-    row-gap: 8px;
-    margin-bottom: 28px;
-
-  }
-
-  .planet-details {
-    display: flex;
-    width: 327px;
+    width: 87.2%;
     height: 48px;
     align-items: center;
     border: 1px solid $color-gray-1;
     padding: 0 24px;
-  }
+    margin: 0 auto;
 
-  .data-title {
-    font-family: 'League Spartan', sans-serif;
-    font-weight: 700;
-    font-size: 11px;
-    color: $color-gray-2;
-    letter-spacing: 0.727273px;
-  }
+    &-title {
+      font-family: 'League Spartan', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      color: $color-gray-2;
+      letter-spacing: 0.727273px;
+    }
 
-  .data {
-    font-weight: 400;
-    font-size: 20px;
-    margin: 0 0 0 auto;
+    &-data {
+      font-weight: 400;
+      font-size: 20px;
+      margin: 0 0 0 auto;
+    }
   }
+}
 
-  .attribution {
-    margin: 0 auto 14px auto;
-    text-align: center;
-    font-size: 15px;
-    width: 327px;
+.attribution {
+  margin: 0 auto 14px auto;
+  text-align: center;
+  font-size: 15px;
+  width: 100%
+}
+
+#nav-checkbox:checked ~ ul.nav-menu {
+  display: flex;
+}
+
+#nav-checkbox:checked ~ label.nav-toggle .nav-toggle-close {
+
+  display: flex;
+  opacity: 0.25;
+}
+
+#nav-checkbox:checked ~ label.nav-toggle .nav-toggle-menu {
+  display: none;
+}
+
+@media screen and (min-width: 376px) {
+  .nav {
+
+    &-toggle {
+      display: none;
+    }
+
+    &-menu {
+      display: flex;
+      flex-direction: row;
+    }
   }
 }
