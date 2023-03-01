@@ -1,47 +1,19 @@
 import { FC } from "react";
-
-interface Daily {
-  current: number;
-  previous: number;
-}
-
-interface Weekly {
-  current: number;
-  previous: number;
-}
-
-interface Monthly {
-  current: number;
-  previous: number;
-}
-
-interface Timeframes {
-  daily: Daily;
-  weekly: Weekly;
-  monthly: Monthly;
-}
+import { Period, Timeframes } from "./index";
 
 interface CardProps {
   title: string;
   timeframes: Timeframes;
   key: string;
-  dailyHours: boolean;
-  weeklyHours: boolean;
-  monthlyHours: boolean;
+  period: Period;
   bgColor: string;
   bgImg: string;
 }
 
-const Card: FC<CardProps> = ({
-  title,
-  timeframes,
-  dailyHours,
-  weeklyHours,
-  monthlyHours,
-  bgColor,
-  bgImg,
-}) => {
+const Card: FC<CardProps> = ({ title, timeframes, period, bgColor, bgImg }) => {
   let btnImg = require(`../media/icon-ellipsis.svg`).default;
+
+  const { current, previous } = timeframes[getTimeframePeriod(period)];
 
   return (
     <div
@@ -56,19 +28,22 @@ const Card: FC<CardProps> = ({
           <p className="activity-title">{title}</p>
           <img src={btnImg} alt="Card button" className="card-btn" />
         </div>
-        <h1>
-          {dailyHours && timeframes.daily.current}
-          {weeklyHours && timeframes.weekly.current}
-          {monthlyHours && timeframes.monthly.current}hrs
-        </h1>
-        <p className="previous-time">
-          {dailyHours && `Yesterday - ${timeframes.daily.previous}hrs`}
-          {weeklyHours && `Last Week - ${timeframes.weekly.previous}hrs`}
-          {monthlyHours && `Last Month - ${timeframes.monthly.previous}hrs`}
-        </p>
+        <h1>{current}hrs</h1>
+        <p className="previous-time">{previous}hrs</p>
       </div>
     </div>
   );
 };
+
+function getTimeframePeriod(period: Period): keyof Timeframes {
+  switch (period) {
+    case "DAILY":
+      return "daily";
+    case "WEEKLY":
+      return "weekly";
+    case "MONTHLY":
+      return "monthly";
+  }
+}
 
 export default Card;

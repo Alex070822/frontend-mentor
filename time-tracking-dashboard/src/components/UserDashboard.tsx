@@ -1,39 +1,29 @@
 import React, { FC } from "react";
+import { Period } from "./index";
+import { v4 as uuidv4 } from "uuid";
 
-interface UserDashboardProps {
-  dailyHours: boolean;
-  setDailyHours: React.Dispatch<React.SetStateAction<boolean>>;
-  weeklyHours: boolean;
-  setWeeklyHours: React.Dispatch<React.SetStateAction<boolean>>;
-  monthlyHours: boolean;
-  setMonthlyHours: React.Dispatch<React.SetStateAction<boolean>>;
+interface Props {
+  period: Period;
+  setPeriod: React.Dispatch<React.SetStateAction<Period>>;
 }
 
-const UserDashboard: FC<UserDashboardProps> = ({
-  dailyHours,
-  setDailyHours,
-  weeklyHours,
-  setWeeklyHours,
-  monthlyHours,
-  setMonthlyHours,
-}) => {
-  const displayDailyHours = () => {
-    setDailyHours(true);
-    setWeeklyHours(false);
-    setMonthlyHours(false);
-  };
-  const displayWeeklyHours = () => {
-    setDailyHours(false);
-    setWeeklyHours(true);
-    setMonthlyHours(false);
-  };
-  const displayMonthlyHours = () => {
-    setDailyHours(false);
-    setWeeklyHours(false);
-    setMonthlyHours(true);
-  };
-
+const UserDashboard: FC<Props> = ({ period, setPeriod }) => {
   const profileImg = require("../media/image-jeremy.png");
+
+  const items = [
+    {
+      value: "DAILY",
+      label: "Daily",
+    },
+    {
+      value: "WEEKLY",
+      label: "Weekly",
+    },
+    {
+      value: "MONTHLY",
+      label: "Monthly",
+    },
+  ];
 
   return (
     <div className="dashboard-main-container">
@@ -43,24 +33,17 @@ const UserDashboard: FC<UserDashboardProps> = ({
         <h2>Jeremy Robson</h2>
       </div>
       <div className="dashboard-tab">
-        <button
-          className={dailyHours ? "selected-dashboard-btn" : "dashboard-btn"}
-          onClick={displayDailyHours}
-        >
-          Daily
-        </button>
-        <button
-          className={weeklyHours ? "selected-dashboard-btn" : "dashboard-btn"}
-          onClick={displayWeeklyHours}
-        >
-          Weekly
-        </button>
-        <button
-          className={monthlyHours ? "selected-dashboard-btn" : "dashboard-btn"}
-          onClick={displayMonthlyHours}
-        >
-          Monthly
-        </button>
+        {items.map(({ value, label }) => (
+          <button
+            key={uuidv4()}
+            className={
+              period === value ? "selected-dashboard-btn" : "dashboard-btn"
+            }
+            onClick={() => setPeriod(period)}
+          >
+            {label}
+          </button>
+        ))}
       </div>
     </div>
   );

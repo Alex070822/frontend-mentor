@@ -2,25 +2,20 @@ import "./styles.scss";
 import { useState } from "react";
 import UserDashboard from "./components/UserDashboard";
 import Card from "./components/Card";
-import MapActivity from "./components/MapActivity";
+import { mapActivity, Period } from "./components";
 import data from "./data/data";
 import { v4 as uuidv4 } from "uuid";
 
 function App() {
-  const [dailyHours, setDailyHours] = useState(false);
-  const [weeklyHours, setWeeklyHours] = useState(true);
-  const [monthlyHours, setMonthlyHours] = useState(false);
+  const [period, setPeriod] = useState<Period>("WEEKLY");
 
-  const activities = data.map(MapActivity);
-  const card = activities.map((activity) => {
+  const cards = data.map(mapActivity).map((activity) => {
     return (
       <Card
         title={activity.title}
         timeframes={activity.timeframes}
         key={uuidv4()}
-        dailyHours={dailyHours}
-        weeklyHours={weeklyHours}
-        monthlyHours={monthlyHours}
+        period={period}
         bgColor={activity.bgColor}
         bgImg={activity.bgImg}
       />
@@ -30,15 +25,8 @@ function App() {
   return (
     <div className="App">
       <main>
-        <UserDashboard
-          dailyHours={dailyHours}
-          setDailyHours={setDailyHours}
-          weeklyHours={weeklyHours}
-          setWeeklyHours={setWeeklyHours}
-          monthlyHours={monthlyHours}
-          setMonthlyHours={setMonthlyHours}
-        />
-        <div className="card-container">{card}</div>
+        <UserDashboard period={period} setPeriod={setPeriod} />
+        <div className="card-container">{cards}</div>
       </main>
       <footer>
         <div className="attribution">

@@ -1,24 +1,16 @@
 import variables from "../styles.scss";
 
-interface Daily {
+export type Period = "DAILY" | "WEEKLY" | "MONTHLY";
+
+interface HoursStats {
   current: number;
   previous: number;
 }
 
-interface Weekly {
-  current: number;
-  previous: number;
-}
-
-interface Monthly {
-  current: number;
-  previous: number;
-}
-
-interface Timeframes {
-  daily: Daily;
-  weekly: Weekly;
-  monthly: Monthly;
+export interface Timeframes {
+  daily: HoursStats;
+  weekly: HoursStats;
+  monthly: HoursStats;
 }
 
 interface RowActivity {
@@ -31,7 +23,7 @@ interface Activity extends RowActivity {
   bgImg: string;
 }
 
-function MapActivity(rowActivity: RowActivity): Activity {
+export function mapActivity(rowActivity: RowActivity): Activity {
   switch (rowActivity.title) {
     case "Work":
       return {
@@ -77,5 +69,3 @@ function MapActivity(rowActivity: RowActivity): Activity {
       };
   }
 }
-
-export default MapActivity;
