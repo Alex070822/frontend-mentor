@@ -2,6 +2,7 @@ import React from "react";
 
 function Navbar() {
   const navbarIcon = require("../media/icon-hamburger.svg").default;
+  const listIcon = require("../media/icon-chevron.svg").default;
 
   return (
     <nav className="nav">
@@ -11,7 +12,8 @@ function Navbar() {
       </label>
       <ul className="nav-menu">
         <li>
-          <a href="">a</a>
+          <a href="">MERCURY</a>
+          <img src={listIcon} alt="list icon" className="list-icon" />
         </li>
       </ul>
     </nav>

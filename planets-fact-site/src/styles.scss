@@ -75,21 +75,31 @@ main {
     left: 0;
     width: 100vw;
     padding: 24px 0 47px 0;
-    background: #1EC1A2;
+    background: $color-blue-1;
 
     li {
+      display: flex;
       list-style: none;
+      align-items: center;
       padding: 20px 32px;
-      background: #CD5120;
+      background: $color-blue-1;
+      height: 66px;
+      border-bottom: 1px solid $color-gray-1;
     }
 
     a {
       text-decoration: none;
       font-family: 'League Spartan', sans-serif;
       font-weight: 700;
-      font-size: 15px;
+      font-size: 21px;
     }
   }
+}
+
+.list-icon {
+  aspect-ratio: 1 / 2;
+  height: 8px;
+  margin: 0 0 0 auto;
 }
 
 .main-info-menu {
