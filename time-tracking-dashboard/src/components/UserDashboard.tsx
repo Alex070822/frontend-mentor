@@ -10,7 +10,10 @@ interface Props {
 const UserDashboard: FC<Props> = ({ period, setPeriod }) => {
   const profileImg = require("../media/image-jeremy.png");
 
-  const items = [
+  const items: Array<{
+    value: Period;
+    label: string;
+  }> = [
     {
       value: "DAILY",
       label: "Daily",
@@ -39,7 +42,7 @@ const UserDashboard: FC<Props> = ({ period, setPeriod }) => {
             className={
               period === value ? "selected-dashboard-btn" : "dashboard-btn"
             }
-            onClick={() => setPeriod(period)}
+            onClick={() => setPeriod(value)}
           >
             {label}
           </button>
