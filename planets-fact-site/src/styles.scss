@@ -16,6 +16,17 @@ $color-saturn-red: #CD5120;
 $color-uranus-cyan: #1EC1A2;
 $color-neptune-blue: #2D68F0;
 
+:export {
+  colorMercury: $color-mercury-cyan;
+  colorVenus: $color-venus-brown;
+  colorEarth: $color-earth-magenta;
+  colorMars: $color-mars-red;
+  colorJupiter: $color-jupiter-red;
+  colorSaturn: $color-saturn-red;
+  colorUranus: $color-uranus-cyan;
+  colorNeptune: $color-neptune-blue;
+}
+
 * {
   margin: 0;
   padding: 0;
