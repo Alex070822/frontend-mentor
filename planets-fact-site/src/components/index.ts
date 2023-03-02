@@ -1,17 +1,17 @@
 import variables from "../styles.scss";
 
-interface SummaryData {
+export interface SummaryData {
   content: string;
   source: string;
 }
 
-interface Images {
+export interface Images {
   planet: string;
   internal: string;
   geology: string;
 }
 
-interface PlanetProps {
+interface PlanetActivity {
   name: string;
   overview: SummaryData;
   structure: SummaryData;
@@ -23,11 +23,11 @@ interface PlanetProps {
   images: Images;
 }
 
-interface Activity extends PlanetProps {
+interface Activity extends PlanetActivity {
   accentColor: string;
 }
 
-export function mapActivity(planetProps: PlanetProps): Activity {
+export function mapActivity(planetProps: PlanetActivity): Activity {
   switch (planetProps.name) {
     case "Mercury":
       return {

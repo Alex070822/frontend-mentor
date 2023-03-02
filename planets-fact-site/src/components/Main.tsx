@@ -1,6 +1,20 @@
-import React from "react";
+import React, { FC } from "react";
+import { Images, SummaryData } from "./index";
 
-function Main() {
+interface PlanetProps {
+  name: string;
+  overview: SummaryData;
+  structure: SummaryData;
+  geology: SummaryData;
+  rotation: string;
+  revolution: string;
+  radius: string;
+  temperature: string;
+  images: Images;
+  accentColor: string;
+}
+
+const Main: FC<PlanetProps> = ({ name }) => {
   const planetImg = require("../media/planet-mercury.svg").default;
   const sourceIcon = require("../media/icon-source.svg").default;
 
@@ -15,7 +29,7 @@ function Main() {
         <img src={planetImg} alt="planet" className="planet-img" />
       </div>
       <div className="general-info">
-        <h1 className="general-info-name">Mercury</h1>
+        <h1 className="general-info-name">{name}</h1>
         <p className="general-info-summary">
           Mercury is the smallest planet in the Solar System and the closest to
           the Sun. Its orbit around the Sun takes 87.97 Earth days, the shortest
@@ -59,6 +73,6 @@ function Main() {
       </div>
     </main>
   );
-}
+};
 
 export default Main;
