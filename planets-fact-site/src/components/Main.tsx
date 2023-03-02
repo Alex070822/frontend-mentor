@@ -14,8 +14,19 @@ interface PlanetProps {
   accentColor: string;
 }
 
-const Main: FC<PlanetProps> = ({ name }) => {
-  const planetImg = require("../media/planet-mercury.svg").default;
+const Main: FC<PlanetProps> = ({
+  name,
+  overview,
+  structure,
+  geology,
+  rotation,
+  revolution,
+  radius,
+  temperature,
+  images,
+  accentColor,
+}) => {
+  const planetImg = require("./assets/planet-mercury.svg").default;
   const sourceIcon = require("../media/icon-source.svg").default;
 
   return (
@@ -26,21 +37,16 @@ const Main: FC<PlanetProps> = ({ name }) => {
         <button className="main-info-menu-btn">Surface</button>
       </div>
       <div className="planet">
-        <img src={planetImg} alt="planet" className="planet-img" />
+        <img src={planetImg} alt={name} className="planet-img" />
       </div>
       <div className="general-info">
         <h1 className="general-info-name">{name}</h1>
-        <p className="general-info-summary">
-          Mercury is the smallest planet in the Solar System and the closest to
-          the Sun. Its orbit around the Sun takes 87.97 Earth days, the shortest
-          of all the Sun's planets. Mercury is one of four terrestrial planets
-          in the Solar System, and is a rocky body like Earth.
-        </p>
+        <p className="general-info-summary">{overview.content}</p>
         <div className="general-info-source">
           <div className="general-info-source-title">Source :&nbsp;</div>
           <a
             className="general-info-source-link"
-            href="https://en.wikipedia.org/wiki/Mercury_(planet)"
+            href={overview.source}
             target="_blank"
             rel="noreferrer noopener"
           >
@@ -56,19 +62,19 @@ const Main: FC<PlanetProps> = ({ name }) => {
       <div className="details">
         <div className="details-item">
           <div className="details-item-title">Rotation Time</div>
-          <div className="details-item-data">58.6 Days</div>
+          <div className="details-item-data">{rotation}</div>
         </div>
         <div className="details-item">
           <div className="details-item-title">Revolution Time</div>
-          <div className="details-item-data">87.97 Days</div>
+          <div className="details-item-data">{revolution}</div>
         </div>
         <div className="details-item">
           <div className="details-item-title">Radius</div>
-          <div className="details-item-data">2,439.7 KM</div>
+          <div className="details-item-data">{radius}</div>
         </div>
         <div className="details-item">
           <div className="details-item-title">Average Temp.</div>
-          <div className="details-item-data">430°c</div>
+          <div className="details-item-data">{temperature}</div>
         </div>
       </div>
     </main>
