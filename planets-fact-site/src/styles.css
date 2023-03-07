@@ -216,6 +216,16 @@ main {
 }
 
 @media screen and (min-width: 376px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    height: 160px;
+    padding: 0 0;
+    margin: 32px 0 39px 0;
+  }
+  .header-title {
+    display: flex;
+  }
   .nav-toggle {
     display: none;
   }

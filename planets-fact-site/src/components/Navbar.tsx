@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { planetContext } from "../App";
 
 function Navbar() {
   const navbarIcon = require("../media/icon-hamburger.svg").default;
   const listIcon = require("../media/icon-chevron.svg").default;
+  const planet = useContext(planetContext);
 
   return (
     <nav className="nav">
@@ -12,7 +14,7 @@ function Navbar() {
       </label>
       <ul className="nav-menu">
         <li>
-          <a href="">MERCURY</a>
+          <a href="">MERCURY{planet.name}</a>
           <img src={listIcon} alt="list icon" className="list-icon" />
         </li>
       </ul>

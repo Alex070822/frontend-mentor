@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Images, SummaryData } from "./index";
+import { Characteristics, Images, PlanetInfo, SummaryData } from "./index";
 
 interface PlanetProps {
   name: string;
@@ -12,6 +12,8 @@ interface PlanetProps {
   temperature: string;
   images: Images;
   accentColor: string;
+  characteristics: Characteristics;
+  setCharacteristics: React.Dispatch<React.SetStateAction<Characteristics>>;
 }
 
 const Main: FC<PlanetProps> = ({
@@ -25,28 +27,45 @@ const Main: FC<PlanetProps> = ({
   temperature,
   images,
   accentColor,
+  characteristics,
+  setCharacteristics,
 }) => {
   const planetImg = require("./assets/planet-mercury.svg").default;
   const sourceIcon = require("../media/icon-source.svg").default;
 
+  const items: Array<{
+    value: Characteristics;
+    label: string;
+  }> = [
+    { value: "OVERVIEW", label: "overview" },
+    { value: "STRUCTURE", label: "structure" },
+    { value: "GEOLOGY", label: "geology" },
+  ];
+
   return (
     <main>
       <div className="main-info-menu">
-        <button className="main-info-menu-btn">Overview</button>
-        <button className="main-info-menu-btn">Structure</button>
-        <button className="main-info-menu-btn">Surface</button>
+        {items.map(({ value, label }) => (
+          <button
+            key={label}
+            className="main-info-menu-btn"
+            onClick={() => setCharacteristics(value)}
+          >
+            {label}
+          </button>
+        ))}
       </div>
       <div className="planet">
         <img src={planetImg} alt={name} className="planet-img" />
       </div>
       <div className="general-info">
         <h1 className="general-info-name">{name}</h1>
-        <p className="general-info-summary">{overview.content}</p>
+        <p className="general-info-summary"></p>
         <div className="general-info-source">
           <div className="general-info-source-title">Source :&nbsp;</div>
           <a
             className="general-info-source-link"
-            href={overview.source}
+            href=""
             target="_blank"
             rel="noreferrer noopener"
           >
@@ -80,5 +99,16 @@ const Main: FC<PlanetProps> = ({
     </main>
   );
 };
+
+function getSummaryData(characteristics: Characteristics): keyof PlanetInfo {
+  switch (characteristics) {
+    case "OVERVIEW":
+      return "overview";
+    case "STRUCTURE":
+      return "structure";
+    case "GEOLOGY":
+      return "geology";
+  }
+}
 
 export default Main;

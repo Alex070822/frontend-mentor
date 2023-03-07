@@ -1,8 +1,16 @@
 import variables from "../styles.scss";
 
+export type Characteristics = "OVERVIEW" | "STRUCTURE" | "GEOLOGY";
+
 export interface SummaryData {
   content: string;
   source: string;
+}
+
+export interface PlanetInfo {
+  overview: SummaryData;
+  structure: SummaryData;
+  geology: SummaryData;
 }
 
 export interface Images {
@@ -11,7 +19,7 @@ export interface Images {
   geology: string;
 }
 
-interface PlanetActivity {
+export interface PlanetActivity {
   name: string;
   overview: SummaryData;
   structure: SummaryData;
