@@ -12,8 +12,8 @@ interface PlanetProps {
   temperature: string;
   images: Images;
   accentColor: string;
-  characteristics: Characteristics;
-  setCharacteristics: React.Dispatch<React.SetStateAction<Characteristics>>;
+  selectedTab: Characteristics;
+  setSelectedTab: React.Dispatch<React.SetStateAction<Characteristics>>;
 }
 
 const Main: FC<PlanetProps> = ({
@@ -27,8 +27,8 @@ const Main: FC<PlanetProps> = ({
   temperature,
   images,
   accentColor,
-  characteristics,
-  setCharacteristics,
+  selectedTab,
+  setSelectedTab,
 }) => {
   const planetImg = require("./assets/planet-mercury.svg").default;
   const sourceIcon = require("../media/icon-source.svg").default;
@@ -49,7 +49,7 @@ const Main: FC<PlanetProps> = ({
           <button
             key={label}
             className="main-info-menu-btn"
-            onClick={() => setCharacteristics(value)}
+            onClick={() => setSelectedTab(value)}
           >
             {label}
           </button>

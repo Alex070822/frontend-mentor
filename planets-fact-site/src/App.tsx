@@ -40,8 +40,8 @@ function App() {
           temperature={planet.temperature}
           images={planet.images}
           accentColor={planet.accentColor}
-          characteristics={selectedTab}
-          setCharacteristics={setSelectedTab}
+          selectedTab={selectedTab}
+          setSelectedTab={setSelectedTab}
         />
       )}
       <Footer />
