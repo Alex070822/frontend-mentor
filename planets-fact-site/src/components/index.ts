@@ -19,7 +19,7 @@ export interface Images {
   geology: string;
 }
 
-export interface PlanetActivity {
+export interface PlanetRaw {
   name: string;
   overview: SummaryData;
   structure: SummaryData;
@@ -31,55 +31,59 @@ export interface PlanetActivity {
   images: Images;
 }
 
-interface Activity extends PlanetActivity {
+interface Planet extends PlanetRaw {
   accentColor: string;
 }
 
-export function mapActivity(planetProps: PlanetActivity): Activity {
-  switch (planetProps.name) {
+export function mapPlanet(planetRaw?: PlanetRaw): Planet | undefined {
+  if (!planetRaw) {
+    return undefined;
+  }
+
+  switch (planetRaw.name) {
     case "Mercury":
       return {
-        ...planetProps,
+        ...planetRaw,
         accentColor: `${variables.colorMercury}`,
       };
     case "Venus":
       return {
-        ...planetProps,
+        ...planetRaw,
         accentColor: `${variables.colorVenus}`,
       };
     case "Earth":
       return {
-        ...planetProps,
+        ...planetRaw,
         accentColor: `${variables.colorEarth}`,
       };
     case "Mars":
       return {
-        ...planetProps,
+        ...planetRaw,
         accentColor: `${variables.colorMars}`,
       };
     case "Jupiter":
       return {
-        ...planetProps,
+        ...planetRaw,
         accentColor: `${variables.colorJupiter}`,
       };
     case "Saturn":
       return {
-        ...planetProps,
+        ...planetRaw,
         accentColor: `${variables.colorSaturn}`,
       };
     case "Uranus":
       return {
-        ...planetProps,
+        ...planetRaw,
         accentColor: `${variables.colorUranus}`,
       };
     case "Neptune":
       return {
-        ...planetProps,
+        ...planetRaw,
         accentColor: `${variables.colorNeptune}`,
       };
     default:
       return {
-        ...planetProps,
+        ...planetRaw,
         accentColor: "",
       };
   }

@@ -3,44 +3,49 @@ import "./styles.scss";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
-import { mapActivity } from "./components";
+import { mapPlanet } from "./components";
 import data from "./data/data";
 import { Characteristics } from "./components";
 
-export const planetContext = React.createContext();
+export const planetContext = React.createContext([]);
 
 function App() {
-  const [characteristics, setCharacteristics] =
-    useState<Characteristics>("OVERVIEW");
+  const [selectedTab, setSelectedTab] = useState<Characteristics>("OVERVIEW");
 
-  const planets = data.map(mapActivity).map((activity) => {
-    return (
-      <Main
-        name={activity.name}
-        overview={activity.overview}
-        structure={activity.structure}
-        geology={activity.geology}
-        rotation={activity.rotation}
-        revolution={activity.revolution}
-        radius={activity.radius}
-        temperature={activity.temperature}
-        images={activity.images}
-        accentColor={activity.accentColor}
-        key={activity.name}
-        characteristics={characteristics}
-        setCharacteristics={setCharacteristics}
-      />
-    );
+  const [selectedPlanet, setSelectedPlanet] = useState("Mercury");
+
+  const planetsNames = data.map((planet) => planet.name);
+
+  const planetRaw = data.find((planet) => {
+    return planet.name === selectedPlanet;
   });
 
+  const planet = mapPlanet(planetRaw);
+
   return (
-    <planetContext.Provider value={planets}>
-      <div className="App">
-        <Header />
-        <>{planets[0]}</>
-        <Footer />
-      </div>
-    </planetContext.Provider>
+    <div className="App">
+      <Header
+        planetsNames={planetsNames}
+        setSelectedPlanet={setSelectedPlanet}
+      />
+      {planet && (
+        <Main
+          name={planet.name}
+          overview={planet.overview}
+          structure={planet.structure}
+          geology={planet.geology}
+          rotation={planet.rotation}
+          revolution={planet.revolution}
+          radius={planet.radius}
+          temperature={planet.temperature}
+          images={planet.images}
+          accentColor={planet.accentColor}
+          characteristics={selectedTab}
+          setCharacteristics={setSelectedTab}
+        />
+      )}
+      <Footer />
+    </div>
   );
 }
 
