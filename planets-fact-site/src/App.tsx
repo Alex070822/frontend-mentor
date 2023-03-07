@@ -3,45 +3,32 @@ import "./styles.scss";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
-import { mapPlanet } from "./components";
+import {mapPlanet, SummaryType} from "./components";
 import data from "./data/data";
-import { Characteristics } from "./components";
 
 export const planetContext = React.createContext([]);
 
 function App() {
-  const [selectedTab, setSelectedTab] = useState<Characteristics>("OVERVIEW");
-
   const [selectedPlanet, setSelectedPlanet] = useState("Mercury");
-
-  const planetsNames = data.map((planet) => planet.name);
+  const [selectedSummaryType, setSelectedSummaryType] = useState<SummaryType>("overview");
 
   const planetRaw = data.find((planet) => {
     return planet.name === selectedPlanet;
   });
 
-  const planet = mapPlanet(planetRaw);
+  const planet = mapPlanet(selectedSummaryType, planetRaw);
 
   return (
     <div className="App">
       <Header
-        planetsNames={planetsNames}
+        planetsNames={data.map((planet) => planet.name)}
         setSelectedPlanet={setSelectedPlanet}
       />
       {planet && (
         <Main
-          name={planet.name}
-          overview={planet.overview}
-          structure={planet.structure}
-          geology={planet.geology}
-          rotation={planet.rotation}
-          revolution={planet.revolution}
-          radius={planet.radius}
-          temperature={planet.temperature}
-          images={planet.images}
-          accentColor={planet.accentColor}
-          selectedTab={selectedTab}
-          setSelectedTab={setSelectedTab}
+          planet={planet}
+          selectedSummaryType={selectedSummaryType}
+          setSelectedSummaryType={setSelectedSummaryType}
         />
       )}
       <Footer />

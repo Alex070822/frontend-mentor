@@ -1,6 +1,6 @@
 import variables from "../styles.scss";
 
-export type Characteristics = "OVERVIEW" | "STRUCTURE" | "GEOLOGY";
+export type SummaryType = "overview" | "structure" | "geology";
 
 export interface SummaryData {
   content: string;
@@ -19,11 +19,8 @@ export interface Images {
   geology: string;
 }
 
-export interface PlanetRaw {
+interface BasePlanet {
   name: string;
-  overview: SummaryData;
-  structure: SummaryData;
-  geology: SummaryData;
   rotation: string;
   revolution: string;
   radius: string;
@@ -31,59 +28,73 @@ export interface PlanetRaw {
   images: Images;
 }
 
-interface Planet extends PlanetRaw {
-  accentColor: string;
+export interface PlanetRaw extends BasePlanet {
+  overview: SummaryData;
+  structure: SummaryData;
+  geology: SummaryData;
 }
 
-export function mapPlanet(planetRaw?: PlanetRaw): Planet | undefined {
+export interface Planet extends BasePlanet {
+  accentColor: string;
+  summary: SummaryData;
+}
+
+export function mapPlanet(summaryType: SummaryType, planetRaw?: PlanetRaw): Planet | undefined {
   if (!planetRaw) {
     return undefined;
+  }
+
+  const {overview, structure, geology, ...basePlanet} = planetRaw
+
+  const planet = {
+    ...basePlanet,
+    summary: planetRaw[summaryType as SummaryType]
   }
 
   switch (planetRaw.name) {
     case "Mercury":
       return {
-        ...planetRaw,
+        ...planet,
         accentColor: `${variables.colorMercury}`,
       };
     case "Venus":
       return {
-        ...planetRaw,
+        ...planet,
         accentColor: `${variables.colorVenus}`,
       };
     case "Earth":
       return {
-        ...planetRaw,
+        ...planet,
         accentColor: `${variables.colorEarth}`,
       };
     case "Mars":
       return {
-        ...planetRaw,
-        accentColor: `${variables.colorMars}`,
+        ...planet,
+        accentColor: `${variables.colorMars}`
       };
     case "Jupiter":
       return {
-        ...planetRaw,
+        ...planet,
         accentColor: `${variables.colorJupiter}`,
       };
     case "Saturn":
       return {
-        ...planetRaw,
+        ...planet,
         accentColor: `${variables.colorSaturn}`,
       };
     case "Uranus":
       return {
-        ...planetRaw,
+        ...planet,
         accentColor: `${variables.colorUranus}`,
       };
     case "Neptune":
       return {
-        ...planetRaw,
+        ...planet,
         accentColor: `${variables.colorNeptune}`,
       };
     default:
       return {
-        ...planetRaw,
+        ...planet,
         accentColor: "",
       };
   }
