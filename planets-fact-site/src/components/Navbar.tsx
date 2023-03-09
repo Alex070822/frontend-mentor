@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import { SummaryType } from "./index";
 
 function Navbar({
   planetsNames,
   setSelectedPlanet,
+  setSelectedSummaryType,
 }: {
   planetsNames: string[];
   setSelectedPlanet: (name: string) => void;
+  setSelectedSummaryType: React.Dispatch<React.SetStateAction<SummaryType>>;
 }) {
   const [navbarToggle, setNavbarToggle] = useState(false);
 
@@ -32,6 +35,7 @@ function Navbar({
               onClick={() => {
                 setSelectedPlanet(name);
                 toggleNavbar();
+                setSelectedSummaryType("overview");
               }}
             >
               {name}

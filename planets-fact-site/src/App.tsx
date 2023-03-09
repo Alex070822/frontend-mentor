@@ -23,6 +23,7 @@ function App() {
       <Header
         planetsNames={data.map((planet) => planet.name)}
         setSelectedPlanet={setSelectedPlanet}
+        setSelectedSummaryType={setSelectedSummaryType}
       />
       {planet && (
         <Main

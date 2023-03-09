@@ -67,10 +67,11 @@ main {
   margin: 0 0 0 auto;
 
   &-toggle-menu {
-    display: inline;
+    cursor: pointer;
 
     &-close{
       opacity: 0.25;
+      cursor: pointer;
     }
   }
 
@@ -131,7 +132,7 @@ main {
   border-top: 1px solid $color-gray-1;
   border-bottom: 1px solid $color-gray-1;
 
-  &-btn {
+  &-btn, &-btn-selected {
     display: flex;
     background: none;
     color: $color-gray-2;
@@ -143,6 +144,13 @@ main {
     align-items: center;
     justify-content: center;
     width: 80px;
+    cursor: pointer;
+  }
+
+  &-btn-selected {
+    color: #FFFFFF;
+    border-bottom: 4px solid red;
+    border-top: 4px solid transparent;
   }
 }
 

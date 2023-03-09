@@ -49,10 +49,11 @@ main {
   margin: 0 0 0 auto;
 }
 .nav-toggle-menu {
-  display: inline;
+  cursor: pointer;
 }
 .nav-toggle-menu-close {
   opacity: 0.25;
+  cursor: pointer;
 }
 .nav-menu {
   display: flex;
@@ -106,7 +107,7 @@ main {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
-.main-info-menu-btn {
+.main-info-menu-btn, .main-info-menu-btn-selected {
   display: flex;
   background: none;
   color: rgba(255, 255, 255, 0.4980392157);
@@ -118,6 +119,12 @@ main {
   align-items: center;
   justify-content: center;
   width: 80px;
+  cursor: pointer;
+}
+.main-info-menu-btn-selected {
+  color: #FFFFFF;
+  border-bottom: 4px solid red;
+  border-top: 4px solid transparent;
 }
 
 .planet {

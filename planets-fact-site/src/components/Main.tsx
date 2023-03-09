@@ -39,7 +39,12 @@ const Main: FC<PlanetProps> = ({
         {tabs.map(({ value, label }) => (
           <button
             key={value}
-            className="main-info-menu-btn"
+            className={
+              selectedSummaryType === value
+                ? "main-info-menu-btn-selected"
+                : "main-info-menu-btn"
+            }
+            style={{ borderBottomColor: accentColor }}
             onClick={() => setSelectedSummaryType(value)}
           >
             {label}
