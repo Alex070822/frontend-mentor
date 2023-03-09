@@ -3,44 +3,36 @@ import "./styles.scss";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
-import { mapActivity } from "./components";
+import { mapPlanet, SummaryType } from "./components";
 import data from "./data/data";
-import { Characteristics } from "./components";
-
-export const planetContext = React.createContext();
 
 function App() {
-  const [characteristics, setCharacteristics] =
-    useState<Characteristics>("OVERVIEW");
+  const [selectedPlanet, setSelectedPlanet] = useState("Mercury");
 
-  const planets = data.map(mapActivity).map((activity) => {
-    return (
-      <Main
-        name={activity.name}
-        overview={activity.overview}
-        structure={activity.structure}
-        geology={activity.geology}
-        rotation={activity.rotation}
-        revolution={activity.revolution}
-        radius={activity.radius}
-        temperature={activity.temperature}
-        images={activity.images}
-        accentColor={activity.accentColor}
-        key={activity.name}
-        characteristics={characteristics}
-        setCharacteristics={setCharacteristics}
-      />
-    );
+  const [selectedSummaryType, setSelectedSummaryType] =
+    useState<SummaryType>("overview");
+
+  const planetRaw = data.find((planet) => {
+    return planet.name === selectedPlanet;
   });
 
+  const planet = mapPlanet(selectedSummaryType, planetRaw);
+
   return (
-    <planetContext.Provider value={planets}>
-      <div className="App">
-        <Header />
-        <>{planets[0]}</>
-        <Footer />
-      </div>
-    </planetContext.Provider>
+    <div className="App">
+      <Header
+        planetsNames={data.map((planet) => planet.name)}
+        setSelectedPlanet={setSelectedPlanet}
+      />
+      {planet && (
+        <Main
+          planet={planet}
+          selectedSummaryType={selectedSummaryType}
+          setSelectedSummaryType={setSelectedSummaryType}
+        />
+      )}
+      <Footer />
+    </div>
   );
 }
 

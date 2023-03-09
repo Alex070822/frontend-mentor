@@ -1,55 +1,46 @@
 import React, { FC } from "react";
-import { Characteristics, Images, PlanetInfo, SummaryData } from "./index";
+import { SummaryType, Planet } from "./index";
 
 interface PlanetProps {
-  name: string;
-  overview: SummaryData;
-  structure: SummaryData;
-  geology: SummaryData;
-  rotation: string;
-  revolution: string;
-  radius: string;
-  temperature: string;
-  images: Images;
-  accentColor: string;
-  characteristics: Characteristics;
-  setCharacteristics: React.Dispatch<React.SetStateAction<Characteristics>>;
+  planet: Planet;
+  selectedSummaryType: SummaryType;
+  setSelectedSummaryType: React.Dispatch<React.SetStateAction<SummaryType>>;
 }
 
 const Main: FC<PlanetProps> = ({
-  name,
-  overview,
-  structure,
-  geology,
-  rotation,
-  revolution,
-  radius,
-  temperature,
-  images,
-  accentColor,
-  characteristics,
-  setCharacteristics,
-}) => {
+  planet: {
+    name,
+    rotation,
+    revolution,
+    radius,
+    temperature,
+    images,
+    accentColor,
+    summary: { content, source },
+  },
+  selectedSummaryType,
+  setSelectedSummaryType,
+}: PlanetProps) => {
   const planetImg = require("./assets/planet-mercury.svg").default;
   const sourceIcon = require("../media/icon-source.svg").default;
 
-  const items: Array<{
-    value: Characteristics;
+  const tabs: Array<{
+    value: SummaryType;
     label: string;
   }> = [
-    { value: "OVERVIEW", label: "overview" },
-    { value: "STRUCTURE", label: "structure" },
-    { value: "GEOLOGY", label: "geology" },
+    { value: "overview", label: "Overview" },
+    { value: "structure", label: "Structure" },
+    { value: "geology", label: "Geology" },
   ];
 
   return (
     <main>
       <div className="main-info-menu">
-        {items.map(({ value, label }) => (
+        {tabs.map(({ value, label }) => (
           <button
-            key={label}
+            key={value}
             className="main-info-menu-btn"
-            onClick={() => setCharacteristics(value)}
+            onClick={() => setSelectedSummaryType(value)}
           >
             {label}
           </button>
@@ -60,12 +51,12 @@ const Main: FC<PlanetProps> = ({
       </div>
       <div className="general-info">
         <h1 className="general-info-name">{name}</h1>
-        <p className="general-info-summary"></p>
+        <p className="general-info-summary">{content}</p>
         <div className="general-info-source">
           <div className="general-info-source-title">Source :&nbsp;</div>
           <a
             className="general-info-source-link"
-            href=""
+            href={source}
             target="_blank"
             rel="noreferrer noopener"
           >
@@ -99,16 +90,5 @@ const Main: FC<PlanetProps> = ({
     </main>
   );
 };
-
-function getSummaryData(characteristics: Characteristics): keyof PlanetInfo {
-  switch (characteristics) {
-    case "OVERVIEW":
-      return "overview";
-    case "STRUCTURE":
-      return "structure";
-    case "GEOLOGY":
-      return "geology";
-  }
-}
 
 export default Main;
