@@ -5,7 +5,7 @@ $color-white-1: #FFFFFF;
 $color-gray-1: #FFFFFF33;
 $color-gray-2: #FFFFFF7F;
 
-$color-blue-1: #070724;
+$color-blue-1: rgb(7, 7, 36);
 
 $color-mercury-cyan: #419EBB;
 $color-venus-brown: #EDA249;
@@ -66,27 +66,27 @@ main {
 .nav {
   margin: 0 0 0 auto;
 
-  &-checkbox {
-    display: none;
-  }
+  &-toggle-menu {
+    display: inline;
 
-  &-toggle {
-    cursor: pointer;
-
-    &-close {
-      display: none;
+    &-close{
+      opacity: 0.25;
     }
   }
 
   &-menu {
-    display: none;
+    display: flex;
     flex-direction: column;
     position: absolute;
     top: 69px;
     left: 0;
     width: 100vw;
-    padding: 24px 0 0 0;
+    padding: 24px 0 100% 0;
     background: $color-blue-1;
+
+    &-hidden {
+      display: none
+    }
 
     &-circle{
       background: #FFFFFF;
@@ -250,15 +250,6 @@ main {
   width: 87.2%;
 }
 
-#nav-checkbox:checked ~ ul.nav-menu {
-  display: flex;
-}
-
-#nav-checkbox:checked ~ label.nav-toggle .nav-toggle-menu {
-  display: flex;
-  opacity: 0.25;
-}
-
 @media screen and (min-width: 376px) {
 
   header {
@@ -274,10 +265,6 @@ main {
   }
 
   .nav {
-
-    &-toggle {
-      display: none;
-    }
 
     &-menu {
       display: flex;
