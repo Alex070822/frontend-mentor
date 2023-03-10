@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SummaryType } from "./index";
 
 function Navbar({
@@ -15,8 +15,14 @@ function Navbar({
   const navbarIcon = require("../media/icon-hamburger.svg").default;
   const listIcon = require("../media/icon-chevron.svg").default;
 
+  useEffect(() => {
+    if (window.innerWidth > 375) setNavbarToggle(true);
+  }, [setNavbarToggle]);
+
   function toggleNavbar() {
-    setNavbarToggle((prevMode) => !prevMode);
+    if (window.innerWidth < 376) {
+      setNavbarToggle((prevMode) => !prevMode);
+    }
   }
 
   return (
