@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { SummaryType, Planet } from "./index";
+import "./styles/Main.scss";
 
 interface PlanetProps {
   planet: Planet;
@@ -41,7 +42,7 @@ const Main: FC<PlanetProps> = ({
             key={value}
             className={
               selectedSummaryType === value
-                ? "main-info-menu-btn-selected"
+                ? "main-info-menu-btn-selected main-info-menu-btn"
                 : "main-info-menu-btn"
             }
             style={{ borderBottomColor: accentColor }}

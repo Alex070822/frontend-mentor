@@ -1,0 +1,25 @@
+header {
+  display: flex;
+  align-items: center;
+  height: 68px;
+  padding: 0 24px;
+}
+
+.header-title {
+  font-weight: 400;
+  font-size: 28px;
+}
+
+@media screen and (min-width: 376px) {
+  header {
+    flex-direction: column;
+    height: 160px;
+    padding: 0 0;
+  }
+  .header-title {
+    display: flex;
+    padding-top: 32px;
+  }
+}
+
+/*# sourceMappingURL=Header.css.map */

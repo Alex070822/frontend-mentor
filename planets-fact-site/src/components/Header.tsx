@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 import { SummaryType } from "./index";
+import "./styles/Header.scss";
 
 function Header({
   planetsNames,

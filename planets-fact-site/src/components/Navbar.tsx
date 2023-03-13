@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { SummaryType } from "./index";
+import "./styles/Navbar.scss";
 
 function Navbar({
   planetsNames,
