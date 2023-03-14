@@ -5,13 +5,24 @@ main {
 }
 
 .main-info-menu {
-  display: flex;
   height: 52px;
   width: 100%;
-  justify-content: space-between;
-  padding: 0 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.main-info-menu-items {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  list-style-type: none;
+}
+
+.main-info-menu-items li {
+  display: flex;
+  height: 100%;
 }
 
 .main-info-menu-btn {

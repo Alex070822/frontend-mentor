@@ -31,26 +31,29 @@ const Main: FC<PlanetProps> = ({
   }> = [
     { value: "overview", label: "Overview" },
     { value: "structure", label: "Structure" },
-    { value: "geology", label: "Geology" },
+    { value: "geology", label: "Surface" },
   ];
 
   return (
     <main>
       <div className="main-info-menu">
-        {tabs.map(({ value, label }) => (
-          <button
-            key={value}
-            className={
-              selectedSummaryType === value
-                ? "main-info-menu-btn-selected main-info-menu-btn"
-                : "main-info-menu-btn"
-            }
-            style={{ borderBottomColor: accentColor }}
-            onClick={() => setSelectedSummaryType(value)}
-          >
-            {label}
-          </button>
-        ))}
+        <ol className="main-info-menu-items">
+          {tabs.map(({ value, label }) => (
+            <li key={value}>
+              <button
+                className={
+                  selectedSummaryType === value
+                    ? "main-info-menu-btn-selected main-info-menu-btn"
+                    : "main-info-menu-btn"
+                }
+                style={{ borderBottomColor: accentColor }}
+                onClick={() => setSelectedSummaryType(value)}
+              >
+                {label}
+              </button>
+            </li>
+          ))}
+        </ol>
       </div>
       <div className="planet">
         <img src={planetImg} alt={name} className="planet-img" />

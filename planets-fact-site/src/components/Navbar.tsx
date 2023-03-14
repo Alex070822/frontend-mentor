@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { SummaryType } from "./index";
 import "./styles/Navbar.scss";
 import { css } from "@emotion/css";
@@ -33,7 +33,8 @@ function Navbar({
         {planetsNames.map((name) => (
           <li key={name}>
             <div className="nav-menu-circle"></div>
-            <a
+            <button
+              className="nav-menu-item"
               onClick={() => {
                 setSelectedPlanet(name);
                 toggleNavbar();
@@ -41,7 +42,7 @@ function Navbar({
               }}
             >
               {name}
-            </a>
+            </button>
             <img src={listIcon} alt="list icon" className="list-icon" />
           </li>
         ))}
