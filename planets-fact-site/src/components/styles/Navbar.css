@@ -94,6 +94,9 @@
     letter-spacing: 1px;
     line-height: 25px;
   }
+  .nav-menu-item:hover {
+    color: #FFFFFF;
+  }
   .nav-menu-circle {
     display: none;
   }

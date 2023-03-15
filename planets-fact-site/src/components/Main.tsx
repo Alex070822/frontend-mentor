@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import React, { FC } from "react";
 import { SummaryType, Planet } from "./index";
 import "./styles/Main.scss";
@@ -31,29 +33,30 @@ const Main: FC<PlanetProps> = ({
   }> = [
     { value: "overview", label: "Overview" },
     { value: "structure", label: "Structure" },
-    { value: "geology", label: "Surface" },
+    { value: "geology", label: "Geology" },
   ];
 
   return (
     <main>
       <div className="main-info-menu">
-        <ol className="main-info-menu-items">
-          {tabs.map(({ value, label }) => (
-            <li key={value}>
-              <button
-                className={
-                  selectedSummaryType === value
-                    ? "main-info-menu-btn-selected main-info-menu-btn"
-                    : "main-info-menu-btn"
-                }
-                style={{ borderBottomColor: accentColor }}
-                onClick={() => setSelectedSummaryType(value)}
-              >
-                {label}
-              </button>
-            </li>
-          ))}
-        </ol>
+        {tabs.map(({ value, label }) => (
+          <button
+            key={value}
+            className={
+              selectedSummaryType === value
+                ? "main-info-menu-btn-selected main-info-menu-btn"
+                : "main-info-menu-btn"
+            }
+            css={css`
+              @media (max-width: 375px) {
+                border-bottom-color: ${accentColor};
+              }
+            `}
+            onClick={() => setSelectedSummaryType(value)}
+          >
+            {label}
+          </button>
+        ))}
       </div>
       <div className="planet">
         <img src={planetImg} alt={name} className="planet-img" />

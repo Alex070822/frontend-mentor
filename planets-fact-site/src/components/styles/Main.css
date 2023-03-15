@@ -5,24 +5,13 @@ main {
 }
 
 .main-info-menu {
+  display: flex;
   height: 52px;
   width: 100%;
+  justify-content: space-between;
+  padding: 0 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.main-info-menu-items {
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 24px;
-  list-style-type: none;
-}
-
-.main-info-menu-items li {
-  display: flex;
-  height: 100%;
 }
 
 .main-info-menu-btn {
@@ -152,18 +141,37 @@ main {
   .main-info-menu {
     order: 3;
     flex-direction: column;
-    height: 152px;
+    row-gap: 16px;
+    height: auto;
     width: 36.5885416%;
     border-top: none;
     border-bottom: none;
     padding: 0;
     margin: 0 5.2083333% 0 auto;
+    counter-reset: section;
   }
-  .main-info-menu-btn, .main-info-menu-btn-selected {
+  .main-info-menu-btn {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
     color: #FFFFFF;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    height: 40px;
+    height: auto;
     width: 100%;
+    letter-spacing: 1.92857px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 14px 0 14px 20px;
+  }
+  .main-info-menu-btn:hover {
+    background-color: rgba(216, 216, 216, 0.2);
+  }
+  .main-info-menu-btn-selected {
+    background: red;
+  }
+  .main-info-menu-btn::before {
+    counter-increment: section;
+    content: counter(section, decimal-leading-zero);
+    color: rgba(255, 255, 255, 0.4980392157);
+    margin-right: 14px;
   }
   .planet {
     order: 1;
@@ -176,7 +184,7 @@ main {
   .general-info {
     order: 2;
     align-items: flex-start;
-    height: 253px;
+    height: auto;
     width: 44.140625%;
     margin: 0 0 27px 5.2083333%;
   }
@@ -189,6 +197,23 @@ main {
   }
   .details {
     order: 4;
+    flex-direction: row;
+    column-gap: 11px;
+    height: 88px;
+    justify-content: center;
+  }
+  .details-item {
+    flex-direction: column;
+    width: 21.356%;
+    height: 100%;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 0 0 1.954%;
+    margin: 0;
+  }
+  .details-item-data {
+    font-size: 24px;
+    margin: 0;
   }
 }
 
