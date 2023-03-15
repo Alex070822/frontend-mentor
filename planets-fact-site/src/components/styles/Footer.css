@@ -5,4 +5,15 @@
   width: 87.2%;
 }
 
+@media screen and (min-width: 376px) {
+  .attribution {
+    font-size: 19px;
+  }
+}
+@media screen and (min-width: 769px) {
+  .attribution {
+    margin: 56px auto 14px auto;
+  }
+}
+
 /*# sourceMappingURL=Footer.css.map */

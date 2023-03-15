@@ -66,7 +66,9 @@
 
   .nav {
     display: flex;
-    width: 100%;
+    width: auto;
+    height: auto;
+    margin: 0;
   }
 
   .nav-toggle-menu {
@@ -111,5 +113,24 @@
 
   .list-icon {
     display: none;
+  }
+}
+
+@media screen and (min-width: 769px) {
+
+  .nav {
+    margin: 0 40px 0 auto;
+  }
+
+  .nav-menu {
+    position: relative;
+    justify-content: flex-end;
+    height: 86px;
+    width: 750px;
+    column-gap: 33px;
+    top: auto;
+    left: auto;
+    padding: 0;
+    border: 0;
   }
 }
