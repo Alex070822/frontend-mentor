@@ -22,7 +22,7 @@
   background: rgb(7, 7, 36);
 }
 
-.nav-menu li {
+.nav-menu-list-item {
   display: flex;
   list-style: none;
   align-items: center;
@@ -89,7 +89,7 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-  .nav-menu li {
+  .nav-menu-list-item {
     background: transparent;
     height: auto;
     border-bottom: none;
@@ -132,5 +132,14 @@
     left: auto;
     padding: 0;
     border: 0;
+  }
+
+  .nav-menu-list-item-selected {
+    border-top: 4px solid red;
+    border-bottom: 4px solid transparent;
+  }
+
+  .nav-menu-item-selected {
+    color: #FFFFFF;
   }
 }

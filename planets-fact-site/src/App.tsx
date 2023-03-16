@@ -22,6 +22,7 @@ function App() {
     <div className="App">
       <Header
         planetsNames={data.map((planet) => planet.name)}
+        selectedPlanet={selectedPlanet}
         setSelectedPlanet={setSelectedPlanet}
         setSelectedSummaryType={setSelectedSummaryType}
       />

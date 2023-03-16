@@ -5,10 +5,12 @@ import "./styles/Header.scss";
 
 function Header({
   planetsNames,
+  selectedPlanet,
   setSelectedPlanet,
   setSelectedSummaryType,
 }: {
   planetsNames: string[];
+  selectedPlanet: string;
   setSelectedPlanet: (name: string) => void;
   setSelectedSummaryType: React.Dispatch<React.SetStateAction<SummaryType>>;
 }) {
@@ -17,6 +19,7 @@ function Header({
       <div className="header-title">THE PLANETS</div>
       <Navbar
         planetsNames={planetsNames}
+        selectedPlanet={selectedPlanet}
         setSelectedPlanet={setSelectedPlanet}
         setSelectedSummaryType={setSelectedSummaryType}
       />

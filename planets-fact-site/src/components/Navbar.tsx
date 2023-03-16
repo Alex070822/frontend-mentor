@@ -4,10 +4,12 @@ import "./styles/Navbar.scss";
 
 function Navbar({
   planetsNames,
+  selectedPlanet,
   setSelectedPlanet,
   setSelectedSummaryType,
 }: {
   planetsNames: string[];
+  selectedPlanet: string;
   setSelectedPlanet: (name: string) => void;
   setSelectedSummaryType: React.Dispatch<React.SetStateAction<SummaryType>>;
 }) {
@@ -36,10 +38,21 @@ function Navbar({
       />
       <ul className={navbarToggle ? "nav-menu" : "nav-menu-hidden"}>
         {planetsNames.map((name) => (
-          <li key={name}>
+          <li
+            className={
+              selectedPlanet === name
+                ? "nav-menu-list-item nav-menu-list-item-selected"
+                : "nav-menu-list-item"
+            }
+            key={name}
+          >
             <div className="nav-menu-circle"></div>
             <button
-              className="nav-menu-item"
+              className={
+                selectedPlanet === name
+                  ? "nav-menu-item-selected nav-menu-item"
+                  : "nav-menu-item"
+              }
               onClick={() => {
                 setSelectedPlanet(name);
                 toggleNavbar();
