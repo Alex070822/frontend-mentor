@@ -1,13 +1,14 @@
 import variables from "../styles.scss";
+import { colors } from "./theme/theme";
 
 export type SummaryType = "overview" | "structure" | "geology";
 
-export interface SummaryData {
+interface SummaryData {
   content: string;
   source: string;
 }
 
-export interface Images {
+interface Images {
   planet: string;
   internal: string;
   geology: string;
@@ -22,7 +23,7 @@ interface BasePlanet {
   images: Images;
 }
 
-export interface PlanetRaw extends BasePlanet {
+interface PlanetRaw extends BasePlanet {
   overview: SummaryData;
   structure: SummaryData;
   geology: SummaryData;
@@ -52,7 +53,7 @@ export function mapPlanet(
     case "Mercury":
       return {
         ...planet,
-        accentColor: `${variables.colorMercury}`,
+        accentColor: colors.mercury,
       };
     case "Venus":
       return {

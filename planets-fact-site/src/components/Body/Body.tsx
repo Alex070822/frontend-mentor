@@ -1,8 +1,7 @@
-/** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
 import React, { FC } from "react";
-import { SummaryType, Planet } from "./index";
-import "./styles/Main.scss";
+import { SummaryType, Planet } from "../index";
+import "./Body.scss";
+import { cx, css } from "@emotion/css";
 
 interface PlanetProps {
   planet: Planet;
@@ -10,7 +9,7 @@ interface PlanetProps {
   setSelectedSummaryType: React.Dispatch<React.SetStateAction<SummaryType>>;
 }
 
-const Main: FC<PlanetProps> = ({
+const Body: FC<PlanetProps> = ({
   planet: {
     name,
     rotation,
@@ -24,8 +23,8 @@ const Main: FC<PlanetProps> = ({
   selectedSummaryType,
   setSelectedSummaryType,
 }: PlanetProps) => {
-  const planetImg = require("./assets/planet-mercury.svg").default;
-  const sourceIcon = require("../media/icon-source.svg").default;
+  const planetImg = require("../../assets/planet-mercury.svg").default;
+  const sourceIcon = require("../../assets/icon-source.svg").default;
 
   const tabs: Array<{
     value: SummaryType;
@@ -42,16 +41,16 @@ const Main: FC<PlanetProps> = ({
         {tabs.map(({ value, label }) => (
           <button
             key={value}
-            className={
+            className={cx(
+              css`
+                @media (max-width: 375px) {
+                  border-bottom-color: ${accentColor};
+                }
+              `,
               selectedSummaryType === value
                 ? "main-info-menu-btn-selected main-info-menu-btn"
                 : "main-info-menu-btn"
-            }
-            css={css`
-              @media (max-width: 375px) {
-                border-bottom-color: ${accentColor};
-              }
-            `}
+            )}
             onClick={() => setSelectedSummaryType(value)}
           >
             {label}
@@ -103,4 +102,4 @@ const Main: FC<PlanetProps> = ({
   );
 };
 
-export default Main;
+export default Body;

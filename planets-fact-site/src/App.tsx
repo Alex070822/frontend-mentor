@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./styles.scss";
-import Header from "./components/Header";
-import Main from "./components/Main";
-import Footer from "./components/Footer";
+import Header from "./components/Header/Header";
+import Body from "./components/Body/Body";
+import Footer from "./components/Footer/Footer";
 import { mapPlanet, SummaryType } from "./components";
 import data from "./data/data";
 
@@ -27,7 +27,7 @@ function App() {
         setSelectedSummaryType={setSelectedSummaryType}
       />
       {planet && (
-        <Main
+        <Body
           planet={planet}
           selectedSummaryType={selectedSummaryType}
           setSelectedSummaryType={setSelectedSummaryType}

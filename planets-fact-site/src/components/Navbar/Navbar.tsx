@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { SummaryType } from "./index";
-import "./styles/Navbar.scss";
+import { SummaryType } from "../index";
+import "./Navbar.scss";
 
 function Navbar({
   planetsNames,
@@ -15,8 +15,8 @@ function Navbar({
 }) {
   const [navbarToggle, setNavbarToggle] = useState(false);
 
-  const navbarIcon = require("../media/icon-hamburger.svg").default;
-  const listIcon = require("../media/icon-chevron.svg").default;
+  const navbarIcon = require("../../assets/icon-hamburger.svg").default;
+  const listIcon = require("../../assets/icon-chevron.svg").default;
 
   useEffect(() => {
     if (window.innerWidth > 375) setNavbarToggle(true);
