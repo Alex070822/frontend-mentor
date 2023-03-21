@@ -1,14 +1,3 @@
-:export {
-  colorMercury: #419EBB;
-  colorVenus: #EDA249;
-  colorEarth: #6D2ED5;
-  colorMars: #D14C32;
-  colorJupiter: #D83A34;
-  colorSaturn: #CD5120;
-  colorUranus: #1EC1A2;
-  colorNeptune: #2D68F0;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -17,7 +6,7 @@
 
 body {
   font-family: "Antonio", sans-serif;
-  color: #FFFFFF;
+  color: white;
   background-color: rgb(7, 7, 36);
   background-image: url("assets/background-stars.svg");
   background-size: cover;

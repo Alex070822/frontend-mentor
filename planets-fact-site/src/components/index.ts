@@ -1,4 +1,3 @@
-import variables from "../styles.scss";
 import { colors } from "./theme/theme";
 
 export type SummaryType = "overview" | "structure" | "geology";
@@ -58,37 +57,37 @@ export function mapPlanet(
     case "Venus":
       return {
         ...planet,
-        accentColor: `${variables.colorVenus}`,
+        accentColor: colors.venus,
       };
     case "Earth":
       return {
         ...planet,
-        accentColor: `${variables.colorEarth}`,
+        accentColor: colors.earth,
       };
     case "Mars":
       return {
         ...planet,
-        accentColor: `${variables.colorMars}`,
+        accentColor: colors.mars,
       };
     case "Jupiter":
       return {
         ...planet,
-        accentColor: `${variables.colorJupiter}`,
+        accentColor: colors.jupiter,
       };
     case "Saturn":
       return {
         ...planet,
-        accentColor: `${variables.colorSaturn}`,
+        accentColor: colors.saturn,
       };
     case "Uranus":
       return {
         ...planet,
-        accentColor: `${variables.colorUranus}`,
+        accentColor: colors.uranus,
       };
     case "Neptune":
       return {
         ...planet,
-        accentColor: `${variables.colorNeptune}`,
+        accentColor: colors.neptune,
       };
     default:
       return {

@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "../Navbar/Navbar";
 import { SummaryType } from "../index";
-import "./Header.scss";
 import { css } from "@emotion/css";
 import { widthBreakpoint } from "../shared";
 
@@ -11,13 +10,13 @@ const headerCss = css`
   height: 68px;
   padding: 0 24px;
 
-  @media (max-width: ${widthBreakpoint.mobile}px) {
+  @media (min-width: ${widthBreakpoint.mobile}px) {
     flex-direction: column;
     height: 160px;
     padding: 0 0;
   }
 
-  @media (max-width: ${widthBreakpoint.web}px) {
+  @media (min-width: ${widthBreakpoint.web}px) {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -29,11 +28,11 @@ const titleCss = css`
   font-weight: 400;
   font-size: 28px;
 
-  @media (max-width: ${widthBreakpoint.mobile}px) {
+  @media (min-width: ${widthBreakpoint.mobile}px) {
     padding-top: 32px;
   }
 
-  @media (max-width: ${widthBreakpoint.web}px) {
+  @media (min-width: ${widthBreakpoint.web}px) {
     letter-spacing: -1.05px;
     width: 109px;
     margin: 22px 0 0 2.22222222%;
