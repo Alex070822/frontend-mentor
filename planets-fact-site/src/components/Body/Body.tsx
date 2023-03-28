@@ -326,7 +326,7 @@ const Body: FC<PlanetProps> = ({
             key={value}
             className={cx(
               css`
-                @media (max-width: 375px) {
+                @media (max-width: ${widthBreakpoint.mobile}px) {
                   border-bottom-color: ${accentColor};
                 }
               `,

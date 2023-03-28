@@ -1,7 +1,7 @@
 import "./App.css";
 import { css } from "@emotion/css";
 import { useEffect, useState } from "react";
-import { IpAddressData } from "./components";
+import { IpAddressData, Test } from "./components";
 import Results from "./components/Results/Results";
 
 const mainCss = css`
@@ -52,28 +52,52 @@ const searchBarButtonCss = css`
   }
 `;
 
-function App() {
-  const [ipAddress, setIpAddress] = useState("");
-  const [fetchData, setFetchData] = useState(false);
-  const [ipData, setIpData] = useState<IpAddressData[]>([]);
-  const infoUrl = `https://geo.ipify.org/api/v2/country,city?apiKey=at_L4axikBrOmxO0MMb9HUtFVQ67JOch&ipAddress=${ipAddress}`;
+interface AppState {
+  ipAddressData: IpAddressData[];
+  shouldLoadItems: boolean;
+}
 
-  function submitIp(e: { preventDefault: () => void }) {
-    e.preventDefault();
-    setFetchData((prevState) => !prevState);
-  }
+function App() {
+  const [{ ipAddressData, shouldLoadItems }, setModel] = useState<AppState>({
+    ipAddressData: [],
+    shouldLoadItems: true,
+  });
+  const [ipAddress, setIpAddress] = useState("");
+  const ipDataUrl = `https://geo.ipify.org/api/v2/country,city?apiKey=at_L4axikBrOmxO0MMb9HUtFVQ67JOch&ipAddress=${ipAddress}`;
 
   useEffect(() => {
-    fetch(infoUrl)
-      .then((response) => response.json())
-      .then((data) => setIpData(data));
-  }, [fetchData]);
+    const fetchData = async () => {
+      const response = await fetch(ipDataUrl);
+      const data: IpAddressData[] = await response.json();
+      for (const [key, value] of Object.entries(data)) {
+        console.log(`${key}: ${value}`);
+      }
+      setModel({
+        ipAddressData: data,
+        shouldLoadItems: false,
+      });
+      console.log(dataToArray);
+    };
+    if (shouldLoadItems) {
+      fetchData();
+    }
+  }, [shouldLoadItems]);
+
+  function inputIp(e: { preventDefault: () => void }) {
+    setModel((prevState) => {
+      return {
+        ...prevState,
+        shouldLoadItems: true,
+      };
+    });
+    e.preventDefault();
+  }
 
   return (
     <div className="App">
       <main className={mainCss}>
         <h1 className={mainTitleCss}>IP Address Tracker</h1>
-        <form className={searchBarContainerCss} onSubmit={submitIp}>
+        <form className={searchBarContainerCss} onSubmit={inputIp}>
           <input
             type="text"
             placeholder="Search for any IP address or domain"
@@ -82,10 +106,48 @@ function App() {
           />
           <input type="submit" value="" className={searchBarButtonCss} />
         </form>
-        <Results ipData={ipData} />
+        {ipAddressData.map(
+          ({
+            ip,
+            location: {
+              country: locationCountry,
+              region: locationRegion,
+              city: locationCity,
+              lat: locationLat,
+              lng: locationLng,
+              postalCode: locationPostalCode,
+              timezone: locationTimezone,
+              geonameId: locationGeonameId,
+            },
+            domains,
+            as: {
+              asn: asAsn,
+              name: asName,
+              route: asRoute,
+              domain: asDomain,
+              type: asType,
+            },
+            isp,
+          }) => (
+            <Results
+              ip={ip}
+              location={getLocation(
+                locationCity,
+                locationCountry,
+                locationPostalCode
+              )}
+              timezone={locationTimezone}
+              isp={isp}
+            />
+          )
+        )}
       </main>
     </div>
   );
+}
+
+function getLocation(city: string, country: string, postalCode: string) {
+  return `${city}, ${country} ${postalCode}`;
 }
 
 export default App;

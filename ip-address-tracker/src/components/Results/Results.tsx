@@ -30,16 +30,13 @@ const resultInfoCss = css`
 `;
 
 interface ipAddressProps {
-  ipData: IpAddressData;
+  ip: string;
+  location: string;
+  timezone: string;
+  isp: string;
 }
 
-const Results: FC<ipAddressProps> = ({
-  ipData: {
-    ip,
-    location: { city, country, postalCode, timezone },
-    isp,
-  },
-}: ipAddressProps) => {
+const Results: FC<ipAddressProps> = ({ ip, location, timezone, isp }) => {
   return (
     <div className={resultsContainerCss}>
       <div className={resultCss}>
@@ -48,9 +45,7 @@ const Results: FC<ipAddressProps> = ({
       </div>
       <div className={resultCss}>
         <div className={resultTitleCss}>Location</div>
-        <div
-          className={resultInfoCss}
-        >{`${city}, ${country} ${postalCode}`}</div>
+        <div className={resultInfoCss}>{location}</div>
       </div>
       <div className={resultCss}>
         <div className={resultTitleCss}>Timezone</div>

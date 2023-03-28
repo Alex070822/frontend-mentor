@@ -91,7 +91,6 @@ const navMenuListItemSelectedCss = css`
   }
 `;
 const navMenuCircleCss = css`
-  background: #ffffff;
   height: 20px;
   width: 20px;
   border-radius: 10px;
@@ -154,11 +153,11 @@ function Navbar({
   const listIcon = require("../../assets/icon-chevron.svg").default;
 
   useEffect(() => {
-    if (window.innerWidth > 375) setNavbarToggle(true);
+    if (window.innerWidth > 480) setNavbarToggle(true);
   }, [setNavbarToggle]);
 
   function toggleNavbar() {
-    if (window.innerWidth < 376) {
+    if (window.innerWidth < 481) {
       setNavbarToggle((prevMode) => !prevMode);
     }
   }
@@ -181,7 +180,14 @@ function Navbar({
             }
             key={name}
           >
-            <div className={navMenuCircleCss}></div>
+            <div
+              className={cx(
+                css`
+                  background: ${colors.neptune};
+                `,
+                navMenuCircleCss
+              )}
+            ></div>
             <button
               className={
                 selectedPlanet === name

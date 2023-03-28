@@ -23,3 +23,11 @@ export interface IpAddressData {
   as: As;
   isp: string;
 }
+
+export interface Test {
+  ip: string;
+  location: Location;
+  domains: string[];
+  as: As;
+  isp: string;
+}
