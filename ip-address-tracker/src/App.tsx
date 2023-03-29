@@ -69,19 +69,17 @@ function App() {
     const fetchData = async () => {
       const response = await fetch(ipDataUrl);
       const data: IpAddressData[] = await response.json();
-      for (const [key, value] of Object.entries(data)) {
-        console.log(`${key}: ${value}`);
-      }
       setModel({
         ipAddressData: data,
         shouldLoadItems: false,
       });
-      console.log(dataToArray);
     };
     if (shouldLoadItems) {
       fetchData();
     }
   }, [shouldLoadItems]);
+
+  console.log([...ipAddressData]);
 
   function inputIp(e: { preventDefault: () => void }) {
     setModel((prevState) => {
