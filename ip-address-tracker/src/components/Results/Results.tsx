@@ -1,5 +1,4 @@
 import { css } from "@emotion/css";
-import { IpAddressData } from "../index";
 import { FC } from "react";
 
 const resultsContainerCss = css`
@@ -29,14 +28,14 @@ const resultInfoCss = css`
   margin-bottom: 24px;
 `;
 
-interface ipAddressProps {
+interface IpAddressProps {
   ip: string;
   location: string;
   timezone: string;
   isp: string;
 }
 
-const Results: FC<ipAddressProps> = ({ ip, location, timezone, isp }) => {
+const Results: FC<IpAddressProps> = ({ ip, location, timezone, isp }) => {
   return (
     <div className={resultsContainerCss}>
       <div className={resultCss}>

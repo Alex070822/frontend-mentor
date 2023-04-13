@@ -1,7 +1,7 @@
 import "./App.css";
 import { css } from "@emotion/css";
 import { useEffect, useState } from "react";
-import { IpAddressData, Test } from "./components";
+import { IpAddressData, IpAddress } from "./components";
 import Results from "./components/Results/Results";
 
 const mainCss = css`
@@ -53,7 +53,7 @@ const searchBarButtonCss = css`
 `;
 
 interface AppState {
-  ipAddressData: IpAddressData[];
+  ipAddressData: IpAddress[];
   shouldLoadItems: boolean;
 }
 
@@ -68,7 +68,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(ipDataUrl);
-      const data: IpAddressData[] = await response.json();
+      const data: IpAddress[] = await response.json();
       setModel({
         ipAddressData: data,
         shouldLoadItems: false,
@@ -79,7 +79,7 @@ function App() {
     }
   }, [shouldLoadItems]);
 
-  console.log([...ipAddressData]);
+  console.log(ipAddressData);
 
   function inputIp(e: { preventDefault: () => void }) {
     setModel((prevState) => {
@@ -90,6 +90,8 @@ function App() {
     });
     e.preventDefault();
   }
+
+  const { ip, location, domains, as, isp }: IpAddressData = ipAddressData;
 
   return (
     <div className="App">
@@ -104,41 +106,16 @@ function App() {
           />
           <input type="submit" value="" className={searchBarButtonCss} />
         </form>
-        {ipAddressData.map(
-          ({
-            ip,
-            location: {
-              country: locationCountry,
-              region: locationRegion,
-              city: locationCity,
-              lat: locationLat,
-              lng: locationLng,
-              postalCode: locationPostalCode,
-              timezone: locationTimezone,
-              geonameId: locationGeonameId,
-            },
-            domains,
-            as: {
-              asn: asAsn,
-              name: asName,
-              route: asRoute,
-              domain: asDomain,
-              type: asType,
-            },
-            isp,
-          }) => (
-            <Results
-              ip={ip}
-              location={getLocation(
-                locationCity,
-                locationCountry,
-                locationPostalCode
-              )}
-              timezone={locationTimezone}
-              isp={isp}
-            />
-          )
-        )}
+        <Results
+          ip={ip}
+          location={getLocation(
+            location.city,
+            location.country,
+            location.postalCode
+          )}
+          timezone={location.timezone}
+          isp={isp}
+        />
       </main>
     </div>
   );
