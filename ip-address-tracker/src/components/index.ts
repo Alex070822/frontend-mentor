@@ -16,7 +16,7 @@ interface As {
   type: string;
 }
 
-export interface IpAddressData {
+export interface IpAddress {
   ip: string;
   location: Location;
   domains: string[];
@@ -24,6 +24,3 @@ export interface IpAddressData {
   isp: string;
 }
 
-export interface IpAddress {
-  data: IpAddressData;
-}

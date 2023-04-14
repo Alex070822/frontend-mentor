@@ -1,7 +1,7 @@
 import "./App.css";
 import { css } from "@emotion/css";
 import { useEffect, useState } from "react";
-import { IpAddressData, IpAddress } from "./components";
+import { IpAddress } from "./components";
 import Results from "./components/Results/Results";
 
 const mainCss = css`
@@ -53,24 +53,26 @@ const searchBarButtonCss = css`
 `;
 
 interface AppState {
-  ipAddressData: IpAddress[];
+  ipAddress: IpAddress | undefined;
   shouldLoadItems: boolean;
 }
 
 function App() {
-  const [{ ipAddressData, shouldLoadItems }, setModel] = useState<AppState>({
-    ipAddressData: [],
+  const [{ ipAddress, shouldLoadItems }, setModel] = useState<AppState>({
+    ipAddress: undefined,
     shouldLoadItems: true,
   });
-  const [ipAddress, setIpAddress] = useState("");
-  const ipDataUrl = `https://geo.ipify.org/api/v2/country,city?apiKey=at_L4axikBrOmxO0MMb9HUtFVQ67JOch&ipAddress=${ipAddress}`;
+
+  const [ipAddressStr, setIpAddressStr] = useState("");
+  const url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_L4axikBrOmxO0MMb9HUtFVQ67JOch&ipAddress=${ipAddressStr}`;
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(ipDataUrl);
-      const data: IpAddress[] = await response.json();
+      const response = await fetch(url);
+      const ipAddress: IpAddress = await response.json();
+
       setModel({
-        ipAddressData: data,
+        ipAddress: ipAddress,
         shouldLoadItems: false,
       });
     };
@@ -78,8 +80,6 @@ function App() {
       fetchData();
     }
   }, [shouldLoadItems]);
-
-  console.log(ipAddressData);
 
   function inputIp(e: { preventDefault: () => void }) {
     setModel((prevState) => {
@@ -91,8 +91,6 @@ function App() {
     e.preventDefault();
   }
 
-  const { ip, location, domains, as, isp }: IpAddressData = ipAddressData;
-
   return (
     <div className="App">
       <main className={mainCss}>
@@ -102,20 +100,23 @@ function App() {
             type="text"
             placeholder="Search for any IP address or domain"
             className={searchInputCss}
-            onChange={(e) => setIpAddress(e.target.value)}
+            onChange={(e) => setIpAddressStr(e.target.value)}
           />
           <input type="submit" value="" className={searchBarButtonCss} />
         </form>
-        <Results
-          ip={ip}
-          location={getLocation(
-            location.city,
-            location.country,
-            location.postalCode
-          )}
-          timezone={location.timezone}
-          isp={isp}
-        />
+
+        {ipAddress && (
+          <Results
+            ip={ipAddress.ip}
+            location={getLocation(
+              ipAddress.location.city,
+              ipAddress.location.country,
+              ipAddress.location.postalCode
+            )}
+            timezone={ipAddress.location.timezone}
+            isp={ipAddress.isp}
+          />
+        )}
       </main>
     </div>
   );
