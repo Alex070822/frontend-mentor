@@ -3,11 +3,13 @@ import { css } from "@emotion/css";
 import { useEffect, useState } from "react";
 import { IpAddress } from "./components";
 import Results from "./components/Results/Results";
+import MapView from "./components/MapView/MapView";
 
 const mainCss = css`
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
 `;
 const mainTitleCss = css`
   color: #ffffff;
@@ -102,20 +104,31 @@ function App() {
             className={searchInputCss}
             onChange={(e) => setIpAddressStr(e.target.value)}
           />
-          <input type="submit" value="" className={searchBarButtonCss} />
-        </form>
-
-        {ipAddress && (
-          <Results
-            ip={ipAddress.ip}
-            location={getLocation(
-              ipAddress.location.city,
-              ipAddress.location.country,
-              ipAddress.location.postalCode
-            )}
-            timezone={ipAddress.location.timezone}
-            isp={ipAddress.isp}
+          <input
+            type="submit"
+            value=""
+            required
+            pattern="[Aa]"
+            className={searchBarButtonCss}
           />
+        </form>
+        {ipAddress && (
+          <>
+            <Results
+              ip={ipAddress.ip}
+              location={getLocation(
+                ipAddress.location.city,
+                ipAddress.location.country,
+                ipAddress.location.postalCode
+              )}
+              timezone={ipAddress.location.timezone}
+              isp={ipAddress.isp}
+            />
+            <MapView
+              lat={ipAddress.location.lat}
+              lng={ipAddress.location.lng}
+            />
+          </>
         )}
       </main>
     </div>

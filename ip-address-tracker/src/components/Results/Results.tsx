@@ -5,10 +5,13 @@ const resultsContainerCss = css`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: absolute;
   background: #ffffff;
   width: 87.201%;
   border-radius: 15px;
+  margin-top: 167px;
   padding: 26px 24px 0 24px;
+  z-index: 2;
 `;
 const resultCss = css`
   text-align: center;
