@@ -101,16 +101,15 @@ function App() {
           <input
             type="text"
             placeholder="Search for any IP address or domain"
-            className={searchInputCss}
+            minLength="7"
+            maxLength="15"
+            size="15"
+            pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$"
+            title="Not a valid IP address."
             onChange={(e) => setIpAddressStr(e.target.value)}
+            className={searchInputCss}
           />
-          <input
-            type="submit"
-            value=""
-            required
-            pattern="[Aa]"
-            className={searchBarButtonCss}
-          />
+          <input type="submit" value="" className={searchBarButtonCss} />
         </form>
         {ipAddress && (
           <>
@@ -125,8 +124,10 @@ function App() {
               isp={ipAddress.isp}
             />
             <MapView
-              lat={ipAddress.location.lat}
-              lng={ipAddress.location.lng}
+              position={getCoordinates(
+                ipAddress.location.lat,
+                ipAddress.location.lng
+              )}
             />
           </>
         )}
@@ -137,6 +138,10 @@ function App() {
 
 function getLocation(city: string, country: string, postalCode: string) {
   return `${city}, ${country} ${postalCode}`;
+}
+
+function getCoordinates(lat: number, lng: number) {
+  return [lat, lng];
 }
 
 export default App;

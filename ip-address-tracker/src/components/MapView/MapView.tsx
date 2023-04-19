@@ -2,7 +2,7 @@ import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { css } from "@emotion/css";
 import L from "leaflet";
-import {FC} from "react";
+import { FC } from "react";
 
 const mapPositionCss = css`
   position: relative;
@@ -18,8 +18,7 @@ const mapSizingCss = css`
 `;
 
 interface Coordinates {
-  lat: number;
-  lng: number;
+  position: number[];
 }
 
 let customIcon = L.icon({
@@ -28,9 +27,7 @@ let customIcon = L.icon({
   iconAnchor: [23, 56],
 });
 
-const MapView: FC<Coordinates> = ({ lat, lng }) => {
-  const position = [lat, lng];
-
+const MapView: FC<Coordinates> = ({ position }) => {
   return (
     <div className={mapPositionCss}>
       <MapContainer
