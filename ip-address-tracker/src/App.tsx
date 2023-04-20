@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { IpAddress } from "./components";
 import Results from "./components/Results/Results";
 import MapView from "./components/MapView/MapView";
+import { widthBreakpoint } from "./components/shared";
 
 const mainCss = css`
   display: flex;
@@ -17,10 +18,19 @@ const mainTitleCss = css`
   font-weight: 500;
   letter-spacing: -0.232143px;
   margin: 26px 0 29px 0;
+
+  @media (min-width: ${widthBreakpoint.desktop}px) {
+    font-size: 32px;
+    margin: 33px 0 31px 0;
+  }
 `;
 const searchBarContainerCss = css`
   display: flex;
   margin-bottom: 24px;
+
+  @media (min-width: ${widthBreakpoint.desktop}px) {
+    margin-bottom: 0;
+  }
 `;
 const searchInputCss = css`
   color: #2c2c2c;
@@ -29,6 +39,7 @@ const searchInputCss = css`
   font-weight: 400;
   height: 58px;
   width: 71.73333vw;
+  max-width: 497px;
   border: none;
   border-radius: 15px 0 0 15px;
   padding-left: 24px;

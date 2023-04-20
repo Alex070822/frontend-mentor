@@ -1,5 +1,6 @@
 import { css } from "@emotion/css";
 import { FC } from "react";
+import { widthBreakpoint } from "../shared";
 
 const resultsContainerCss = css`
   display: flex;
@@ -12,9 +13,23 @@ const resultsContainerCss = css`
   margin-top: 167px;
   padding: 26px 24px 0 24px;
   z-index: 2;
+
+  @media (min-width: ${widthBreakpoint.desktop}px) {
+    flex-direction: row;
+    column-gap: 64px;
+    justify-content: center;
+    height: 161px;
+    max-width: 1110px;
+    margin-top: 200px;
+    padding: 37px 32px 0 32px;
+  }
 `;
 const resultCss = css`
   text-align: center;
+
+  @media (min-width: ${widthBreakpoint.desktop}px) {
+    width: 213px;
+  }
 `;
 const resultTitleCss = css`
   text-transform: uppercase;
@@ -23,12 +38,21 @@ const resultTitleCss = css`
   letter-spacing: 1.45833px;
   margin-bottom: 7px;
   opacity: 0.5;
+
+  @media (min-width: ${widthBreakpoint.desktop}px) {
+    font-size: 12px;
+    margin-bottom: 13px;
+  }
 `;
 const resultInfoCss = css`
   font-size: 20px;
   font-weight: 500;
   letter-spacing: -0.178571px;
   margin-bottom: 24px;
+
+  @media (min-width: ${widthBreakpoint.desktop}px) {
+    font-size: 26px;
+  }
 `;
 
 interface IpAddressProps {

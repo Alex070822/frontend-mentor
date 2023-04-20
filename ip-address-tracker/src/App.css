@@ -18,3 +18,9 @@ body {
     background-size: auto 280px;
   }
 }
+
+@media (min-width: 1441px) {
+  body {
+    background-size: 100% 280px;
+  }
+}

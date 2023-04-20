@@ -2,7 +2,8 @@ import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { css } from "@emotion/css";
 import L from "leaflet";
-import { FC } from "react";
+import { FC, useEffect, useRef, useState } from "react";
+import { widthBreakpoint } from "../shared";
 
 const mapPositionCss = css`
   position: relative;
@@ -10,6 +11,10 @@ const mapPositionCss = css`
   flex: 1;
   width: 100%;
   z-index: 1;
+
+  @media (min-width: ${widthBreakpoint.tablet}px) {
+    margin-top: 112px;
+  }
 `;
 const mapSizingCss = css`
   position: absolute;
@@ -28,14 +33,30 @@ let customIcon = L.icon({
 });
 
 const MapView: FC<Coordinates> = ({ position }) => {
+  const mapRef = useRef(null);
+  const [map, setMap] = useState(null);
+
+  useEffect(() => {
+    if (map && position) {
+      map.flyTo(position, 16, { duration: 2 });
+    }
+  }, [map, position]);
+
+  useEffect(() => {
+    if (mapRef.current) {
+      setMap(mapRef.current);
+    }
+  }, [mapRef]);
+
   return (
     <div className={mapPositionCss}>
       <MapContainer
         center={position}
-        zoom={13}
+        zoom={16}
         zoomControl={false}
         scrollWheelZoom={false}
         className={mapSizingCss}
+        ref={mapRef}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
