@@ -10,11 +10,17 @@ body {
   background-image: url("assets/pattern-bg.png");
   background-repeat: no-repeat;
   background-position: top center;
-  background-size: auto;
+  background-size: auto 300px;
+}
+
+@media (min-width: 481px) {
+  body {
+    background-size: auto 280px;
+  }
 }
 
 @media (min-width: 1441px) {
   body {
-    background-size: 100% 250px;
+    background-size: 100% 280px;
   }
 }

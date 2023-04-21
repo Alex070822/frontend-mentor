@@ -1,13 +1,17 @@
 import "./App.css";
 import { css } from "@emotion/css";
 import { useEffect, useState } from "react";
-import { IpAddressData, Test } from "./components";
+import { IpAddress } from "./components";
 import Results from "./components/Results/Results";
+import MapView from "./components/MapView/MapView";
+import { widthBreakpoint } from "./components/shared";
+import "react-tooltip/dist/react-tooltip.css";
 
 const mainCss = css`
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
 `;
 const mainTitleCss = css`
   color: #ffffff;
@@ -15,10 +19,19 @@ const mainTitleCss = css`
   font-weight: 500;
   letter-spacing: -0.232143px;
   margin: 26px 0 29px 0;
+
+  @media (min-width: ${widthBreakpoint.desktop}px) {
+    font-size: 32px;
+    margin: 33px 0 31px 0;
+  }
 `;
 const searchBarContainerCss = css`
   display: flex;
   margin-bottom: 24px;
+
+  @media (min-width: ${widthBreakpoint.desktop}px) {
+    margin-bottom: 0;
+  }
 `;
 const searchInputCss = css`
   color: #2c2c2c;
@@ -27,6 +40,7 @@ const searchInputCss = css`
   font-weight: 400;
   height: 58px;
   width: 71.73333vw;
+  max-width: 497px;
   border: none;
   border-radius: 15px 0 0 15px;
   padding-left: 24px;
@@ -53,24 +67,26 @@ const searchBarButtonCss = css`
 `;
 
 interface AppState {
-  ipAddressData: IpAddressData[];
+  ipAddress: IpAddress | undefined;
   shouldLoadItems: boolean;
 }
 
 function App() {
-  const [{ ipAddressData, shouldLoadItems }, setModel] = useState<AppState>({
-    ipAddressData: [],
+  const [{ ipAddress, shouldLoadItems }, setModel] = useState<AppState>({
+    ipAddress: undefined,
     shouldLoadItems: true,
   });
-  const [ipAddress, setIpAddress] = useState("");
-  const ipDataUrl = `https://geo.ipify.org/api/v2/country,city?apiKey=at_L4axikBrOmxO0MMb9HUtFVQ67JOch&ipAddress=${ipAddress}`;
+
+  const [ipAddressStr, setIpAddressStr] = useState("");
+  const url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_L4axikBrOmxO0MMb9HUtFVQ67JOch&ipAddress=${ipAddressStr}`;
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(ipDataUrl);
-      const data: IpAddressData[] = await response.json();
+      const response = await fetch(url);
+      const ipAddress: IpAddress = await response.json();
+
       setModel({
-        ipAddressData: data,
+        ipAddress: ipAddress,
         shouldLoadItems: false,
       });
     };
@@ -78,8 +94,6 @@ function App() {
       fetchData();
     }
   }, [shouldLoadItems]);
-
-  console.log([...ipAddressData]);
 
   function inputIp(e: { preventDefault: () => void }) {
     setModel((prevState) => {
@@ -99,45 +113,35 @@ function App() {
           <input
             type="text"
             placeholder="Search for any IP address or domain"
+            minLength="7"
+            maxLength="15"
+            size="15"
+            pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$"
+            title="Not a valid IP address."
+            onChange={(e) => setIpAddressStr(e.target.value)}
             className={searchInputCss}
-            onChange={(e) => setIpAddress(e.target.value)}
           />
           <input type="submit" value="" className={searchBarButtonCss} />
         </form>
-        {ipAddressData.map(
-          ({
-            ip,
-            location: {
-              country: locationCountry,
-              region: locationRegion,
-              city: locationCity,
-              lat: locationLat,
-              lng: locationLng,
-              postalCode: locationPostalCode,
-              timezone: locationTimezone,
-              geonameId: locationGeonameId,
-            },
-            domains,
-            as: {
-              asn: asAsn,
-              name: asName,
-              route: asRoute,
-              domain: asDomain,
-              type: asType,
-            },
-            isp,
-          }) => (
+        {ipAddress && (
+          <>
             <Results
-              ip={ip}
+              ip={ipAddress.ip}
               location={getLocation(
-                locationCity,
-                locationCountry,
-                locationPostalCode
+                ipAddress.location.city,
+                ipAddress.location.country,
+                ipAddress.location.postalCode
               )}
-              timezone={locationTimezone}
-              isp={isp}
+              timezone={ipAddress.location.timezone}
+              isp={ipAddress.isp}
             />
-          )
+            <MapView
+              position={getCoordinates(
+                ipAddress.location.lat,
+                ipAddress.location.lng
+              )}
+            />
+          </>
         )}
       </main>
     </div>
@@ -146,6 +150,10 @@ function App() {
 
 function getLocation(city: string, country: string, postalCode: string) {
   return `${city}, ${country} ${postalCode}`;
+}
+
+function getCoordinates(lat: number, lng: number) {
+  return [lat, lng];
 }
 
 export default App;
