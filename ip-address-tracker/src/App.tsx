@@ -5,6 +5,7 @@ import { IpAddress } from "./components";
 import Results from "./components/Results/Results";
 import MapView from "./components/MapView/MapView";
 import { widthBreakpoint } from "./components/shared";
+import "react-tooltip/dist/react-tooltip.css";
 
 const mainCss = css`
   display: flex;

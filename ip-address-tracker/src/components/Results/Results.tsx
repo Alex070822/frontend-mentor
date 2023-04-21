@@ -1,6 +1,8 @@
+import React from "react";
 import { css } from "@emotion/css";
 import { FC } from "react";
 import { widthBreakpoint } from "../shared";
+import { Tooltip } from "react-tooltip";
 
 const resultsContainerCss = css`
   display: flex;
@@ -16,12 +18,10 @@ const resultsContainerCss = css`
 
   @media (min-width: ${widthBreakpoint.desktop}px) {
     flex-direction: row;
-    column-gap: 64px;
-    justify-content: center;
     height: 161px;
     max-width: 1110px;
     margin-top: 200px;
-    padding: 37px 32px 0 32px;
+    padding: 0 32px 0 32px;
   }
 `;
 const resultCss = css`
@@ -29,6 +29,9 @@ const resultCss = css`
 
   @media (min-width: ${widthBreakpoint.desktop}px) {
     width: 213px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 `;
 const resultTitleCss = css`
@@ -52,6 +55,25 @@ const resultInfoCss = css`
 
   @media (min-width: ${widthBreakpoint.desktop}px) {
     font-size: 26px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+`;
+const resultDividerCss = css`
+  display: none;
+
+  @media (min-width: ${widthBreakpoint.desktop}px) {
+    display: block;
+    color: #000000;
+    opacity: 0.15;
+    width: 1px;
+    height: 75px;
+    margin: 0 32px 0 32px;
+
+    &:last-child {
+      display: none;
+    }
   }
 `;
 
@@ -65,22 +87,33 @@ interface IpAddressProps {
 const Results: FC<IpAddressProps> = ({ ip, location, timezone, isp }) => {
   return (
     <div className={resultsContainerCss}>
-      <div className={resultCss}>
-        <div className={resultTitleCss}>IP Address</div>
-        <div className={resultInfoCss}>{ip}</div>
-      </div>
-      <div className={resultCss}>
-        <div className={resultTitleCss}>Location</div>
-        <div className={resultInfoCss}>{location}</div>
-      </div>
-      <div className={resultCss}>
-        <div className={resultTitleCss}>Timezone</div>
-        <div className={resultInfoCss}>UTC {timezone}</div>
-      </div>
-      <div className={resultCss}>
-        <div className={resultTitleCss}>ISP</div>
-        <div className={resultInfoCss}>{isp}</div>
-      </div>
+      {[
+        { title: "IP Address", info: ip, tooltipId: "resultInfoIp" },
+        { title: "Location", info: location, tooltipId: "resultInfoLocation" },
+        {
+          title: "Timezone",
+          info: `UTC ${timezone}`,
+          tooltipId: "resultInfoTimezone",
+        },
+        { title: "ISP", info: isp, tooltipId: "resultInfoIsp" },
+      ].map((result, index) => (
+        <React.Fragment key={index}>
+          <div className={resultCss}>
+            <div className={resultTitleCss}>{result.title}</div>
+            <div className={resultInfoCss} data-tooltip-id={result.tooltipId}>
+              {result.info}
+            </div>
+            <Tooltip
+              id={result.tooltipId}
+              place="bottom"
+              style={{ opacity: 0.7 }}
+            >
+              {result.info}
+            </Tooltip>
+          </div>
+          <hr className={resultDividerCss} />
+        </React.Fragment>
+      ))}
     </div>
   );
 };
