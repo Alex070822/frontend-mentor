@@ -150,7 +150,7 @@ function getLocation(city: string, country: string, postalCode: string) {
   return `${city}, ${country} ${postalCode}`;
 }
 
-function getCoordinates(lat: number, lng: number) {
+function getCoordinates(lat: number, lng: number): [number, number] {
   return [lat, lng];
 }
 
