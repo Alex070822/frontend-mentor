@@ -1,4 +1,4 @@
-import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
+import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { css } from "@emotion/css";
 import L from "leaflet";
@@ -23,7 +23,7 @@ const mapSizingCss = css`
 `;
 
 interface Coordinates {
-  position: number[];
+  position: [number, number];
 }
 
 let customIcon = L.icon({
@@ -33,8 +33,8 @@ let customIcon = L.icon({
 });
 
 const MapView: FC<Coordinates> = ({ position }) => {
-  const mapRef = useRef(null);
-  const [map, setMap] = useState(null);
+  const mapRef = useRef<L.Map | null>(null);
+  const [map, setMap] = useState<L.Map | null>(null);
 
   useEffect(() => {
     if (map && position) {
