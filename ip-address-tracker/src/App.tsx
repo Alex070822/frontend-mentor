@@ -78,7 +78,7 @@ function App() {
   });
 
   const [ipAddressStr, setIpAddressStr] = useState("");
-  const url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_L4axikBrOmxO0MMb9HUtFVQ67JOch&ipAddress=${ipAddressStr}`;
+  const url = `/api/api/v2/country,city?apiKey=at_L4axikBrOmxO0MMb9HUtFVQ67JOch&ipAddress=${ipAddressStr}`;
 
   useEffect(() => {
     const fetchData = async () => {
