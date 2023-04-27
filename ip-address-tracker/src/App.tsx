@@ -117,9 +117,9 @@ function App() {
     e.preventDefault();
   }
 
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const handleSearchClick = () => {
-    const inputValue: string | undefined = inputRef.current.value;
+    const inputValue: string | undefined = inputRef.current?.value;
     if (inputValue) {
       setIpAddressStr(inputValue);
     }
