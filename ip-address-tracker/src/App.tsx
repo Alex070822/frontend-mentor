@@ -1,11 +1,13 @@
 import "./App.css";
 import { css } from "@emotion/css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IpAddress } from "./components";
 import Results from "./components/Results/Results";
 import MapView from "./components/MapView/MapView";
 import { widthBreakpoint } from "./components/shared";
 import "react-tooltip/dist/react-tooltip.css";
+import { MapContainer } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 
 const mainCss = css`
   display: flex;
@@ -65,6 +67,16 @@ const searchBarButtonCss = css`
     background-position: center;
   }
 `;
+const mapContainerCss = css`
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  margin-top: 132px;
+
+  @media (min-width: ${widthBreakpoint.tablet}px) {
+    margin-top: 112px;
+  }
+`;
 
 interface AppState {
   ipAddress: IpAddress | undefined;
@@ -78,7 +90,7 @@ function App() {
   });
 
   const [ipAddressStr, setIpAddressStr] = useState("");
-  const url = `/api/api/v2/country,city?apiKey=at_L4axikBrOmxO0MMb9HUtFVQ67JOch&ipAddress=${ipAddressStr}`;
+  const url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_1WSsHxxD8zSxCus2Qbelf0CMAnnpj&ipAddress=${ipAddressStr}`;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -105,6 +117,14 @@ function App() {
     e.preventDefault();
   }
 
+  const inputRef = useRef(null);
+  const handleSearchClick = () => {
+    const inputValue: string | undefined = inputRef.current.value;
+    if (inputValue) {
+      setIpAddressStr(inputValue);
+    }
+  };
+
   return (
     <div className="App">
       <main className={mainCss}>
@@ -116,10 +136,15 @@ function App() {
             maxLength={15}
             pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$"
             title="Not a valid IP address."
-            onChange={(e) => setIpAddressStr(e.target.value)}
             className={searchInputCss}
+            ref={inputRef}
           />
-          <input type="submit" value="" className={searchBarButtonCss} />
+          <input
+            type="submit"
+            value=""
+            className={searchBarButtonCss}
+            onClick={handleSearchClick}
+          />
         </form>
         {ipAddress && (
           <>
@@ -133,12 +158,23 @@ function App() {
               timezone={ipAddress.location.timezone}
               isp={ipAddress.isp}
             />
-            <MapView
-              position={getCoordinates(
+            <MapContainer
+              center={getCoordinates(
                 ipAddress.location.lat,
                 ipAddress.location.lng
               )}
-            />
+              zoom={16}
+              zoomControl={false}
+              scrollWheelZoom={false}
+              className={mapContainerCss}
+            >
+              <MapView
+                position={getCoordinates(
+                  ipAddress.location.lat,
+                  ipAddress.location.lng
+                )}
+              />
+            </MapContainer>
           </>
         )}
       </main>
