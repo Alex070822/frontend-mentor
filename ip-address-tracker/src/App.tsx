@@ -57,12 +57,12 @@ const searchBarButtonCss = css`
   height: 58px;
   width: 58px;
   cursor: pointer;
-  background-image: url("public/assets/icon-arrow.svg");
+  background-image: url("/assets/icon-arrow.svg");
   background-repeat: no-repeat;
   background-position: center;
   &:hover {
     background: #3f3f3f;
-    background-image: url("public/assets/icon-arrow.svg");
+    background-image: url("/assets/icon-arrow.svg");
     background-repeat: no-repeat;
     background-position: center;
   }
