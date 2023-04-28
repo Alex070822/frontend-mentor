@@ -8,7 +8,7 @@ interface Coordinates {
 }
 
 let customIcon = L.icon({
-  iconUrl: "src/assets/icon-location.svg",
+  iconUrl: "public/assets/icon-location.svg",
   iconSize: [46, 56],
   iconAnchor: [23, 56],
 });
