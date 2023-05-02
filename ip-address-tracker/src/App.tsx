@@ -138,12 +138,14 @@ function App() {
             title="Not a valid IP address."
             className={searchInputCss}
             ref={inputRef}
+            aria-label="search bar"
           />
           <input
             type="submit"
             value=""
             className={searchBarButtonCss}
             onClick={handleSearchClick}
+            aria-label="search bar button"
           />
         </form>
         {ipAddress && (
