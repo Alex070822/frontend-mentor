@@ -1,6 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 import { css } from "@emotion/css";
 import { widthBreakpoint } from "../shared";
+import { Planet } from "../index";
+import { colors } from "../theme/theme";
 
 const attributionCss = css`
   margin: 0 auto 14px auto;
@@ -17,7 +19,11 @@ const attributionCss = css`
   }
 `;
 
-function Footer() {
+interface FooterProps {
+  planet: Planet;
+}
+
+const Footer: FC<FooterProps> = ({ planet: { name } }: FooterProps) => {
   return (
     <footer>
       <div className={attributionCss}>
@@ -26,6 +32,9 @@ function Footer() {
           href="https://www.frontendmentor.io/challenges/planets-fact-site-gazqN8w_f"
           target="_blank"
           rel="noreferrer noopener"
+          className={css`
+            color: ${colors[name.toLowerCase()]};
+          `}
         >
           Frontend Mentor
         </a>
@@ -34,6 +43,9 @@ function Footer() {
           href="https://www.linkedin.com/in/alexis-glez-h"
           target="_blank"
           rel="noreferrer noopener"
+          className={css`
+            color: ${colors[name.toLowerCase()]};
+          `}
         >
           Alexis González
         </a>
@@ -41,6 +53,6 @@ function Footer() {
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;

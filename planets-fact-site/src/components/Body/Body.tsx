@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { SummaryType, Planet } from "../index";
 import { cx, css } from "@emotion/css";
 import { widthBreakpoint } from "../shared";
+import { colors } from "../theme/theme";
 
 const mainCss = css`
   display: flex;
@@ -81,15 +82,6 @@ const mainInfoMenuBtnCss = css`
       color: rgba(255, 255, 255, 0.4980392157);
       margin-right: 14px;
     }
-  }
-`;
-const mainInfoMenuBtnSelectedCss = css`
-  color: #ffffff;
-  border-bottom: 4px solid red;
-  border-top: 4px solid transparent;
-
-  @media (min-width: ${widthBreakpoint.mobile}px) {
-    background: red;
   }
 `;
 const planetCss = css`
@@ -306,7 +298,6 @@ const Body: FC<PlanetProps> = ({
   selectedSummaryType,
   setSelectedSummaryType,
 }: PlanetProps) => {
-  const planetImg = require("../../assets/planet-mercury.svg").default;
   const sourceIcon = require("../../assets/icon-source.svg").default;
 
   const tabs: Array<{
@@ -331,7 +322,18 @@ const Body: FC<PlanetProps> = ({
                 }
               `,
               selectedSummaryType === value
-                ? cx(mainInfoMenuBtnCss, mainInfoMenuBtnSelectedCss)
+                ? cx(
+                    mainInfoMenuBtnCss,
+                    css`
+                      color: #ffffff;
+                      border-bottom: 4px solid red;
+                      border-top: 4px solid transparent;
+
+                      @media (min-width: ${widthBreakpoint.mobile}px) {
+                        background: ${colors[name.toLowerCase()]};
+                      }
+                    `
+                  )
                 : mainInfoMenuBtnCss
             )}
             onClick={() => setSelectedSummaryType(value)}
@@ -341,7 +343,7 @@ const Body: FC<PlanetProps> = ({
         ))}
       </div>
       <div className={planetCss}>
-        <img src={planetImg} alt={name} className={planetImgCss} />
+        <img src={sourceIcon} alt={name} className={planetImgCss} />
       </div>
       <div className={generalInfoCss}>
         <h1 className={generalInfoNameCss}>{name}</h1>

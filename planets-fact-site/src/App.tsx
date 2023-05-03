@@ -33,7 +33,7 @@ function App() {
           setSelectedSummaryType={setSelectedSummaryType}
         />
       )}
-      <Footer />
+      {planet && <Footer planet={planet} />}
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { SummaryType } from "../index";
 import { css, cx } from "@emotion/css";
 import { widthBreakpoint } from "../shared";
-import { colors } from "../theme/theme";
+import { colors, navbarColors } from "../theme/theme";
 
 const navCss = css`
   margin: 0 0 0 auto;
@@ -82,12 +82,6 @@ const navMenuListItemCss = css`
     height: auto;
     border-bottom: none;
     padding: 0;
-  }
-`;
-const navMenuListItemSelectedCss = css`
-  @media (min-width: ${widthBreakpoint.web}px) {
-    border-top: 4px solid red;
-    border-bottom: 4px solid transparent;
   }
 `;
 const navMenuCircleCss = css`
@@ -175,7 +169,15 @@ function Navbar({
           <li
             className={
               selectedPlanet === name
-                ? cx(navMenuListItemCss, navMenuListItemSelectedCss)
+                ? cx(
+                    navMenuListItemCss,
+                    css`
+                      @media (min-width: ${widthBreakpoint.web}px) {
+                        border-top: 4px solid ${colors[name.toLowerCase()]};
+                        border-bottom: 4px solid transparent;
+                      }
+                    `
+                  )
                 : navMenuListItemCss
             }
             key={name}
@@ -183,7 +185,7 @@ function Navbar({
             <div
               className={cx(
                 css`
-                  background: ${colors.neptune};
+                  background: ${navbarColors[name.toLowerCase()]};
                 `,
                 navMenuCircleCss
               )}
