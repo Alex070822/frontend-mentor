@@ -10,11 +10,11 @@ const attributionCss = css`
   font-size: 15px;
   width: 87.2%;
 
-  @media (min-width: ${widthBreakpoint.mobile}px) {
+  @media (min-width: ${widthBreakpoint.tablet}px) {
     font-size: 19px;
   }
 
-  @media (min-width: ${widthBreakpoint.web}px) {
+  @media (min-width: ${widthBreakpoint.laptop}px) {
     margin: 56px auto 14px auto;
   }
 `;

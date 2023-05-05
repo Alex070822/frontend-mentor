@@ -11,6 +11,7 @@ interface Images {
   planet: string;
   internal: string;
   geology: string;
+  [key: string]: string;
 }
 
 interface BasePlanet {

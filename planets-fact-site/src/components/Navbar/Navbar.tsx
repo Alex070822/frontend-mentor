@@ -7,21 +7,21 @@ import { colors, navbarColors } from "../theme/theme";
 const navCss = css`
   margin: 0 0 0 auto;
 
-  @media (min-width: ${widthBreakpoint.mobile}px) {
+  @media (min-width: ${widthBreakpoint.tablet}px) {
     display: flex;
     width: auto;
     height: auto;
     margin: 0;
   }
 
-  @media (min-width: ${widthBreakpoint.web}px) {
+  @media (min-width: ${widthBreakpoint.laptop}px) {
     margin: 0 40px 0 auto;
   }
 `;
 const navToggleMenuCss = css`
   cursor: pointer;
 
-  @media (min-width: ${widthBreakpoint.mobile}px) {
+  @media (min-width: ${widthBreakpoint.tablet}px) {
     display: none;
   }
 `;
@@ -29,7 +29,7 @@ const navToggleMenuCloseCss = css`
   opacity: 0.25;
   cursor: pointer;
 
-  @media (min-width: ${widthBreakpoint.mobile}px) {
+  @media (min-width: ${widthBreakpoint.tablet}px) {
     display: none;
   }
 `;
@@ -42,8 +42,9 @@ const navMenuCss = css`
   width: 100vw;
   padding: 24px 0 100% 0;
   background: rgb(7, 7, 36);
+  z-index: 2;
 
-  @media (min-width: ${widthBreakpoint.mobile}px) {
+  @media (min-width: ${widthBreakpoint.tablet}px) {
     flex-direction: row;
     flex-wrap: wrap;
     column-gap: 4.296875%;
@@ -53,7 +54,7 @@ const navMenuCss = css`
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-  @media (min-width: ${widthBreakpoint.web}px) {
+  @media (min-width: ${widthBreakpoint.laptop}px) {
     position: relative;
     justify-content: flex-end;
     height: 86px;
@@ -77,7 +78,7 @@ const navMenuListItemCss = css`
   padding: 20px 32px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 
-  @media (min-width: ${widthBreakpoint.mobile}px) {
+  @media (min-width: ${widthBreakpoint.tablet}px) {
     background: transparent;
     height: auto;
     border-bottom: none;
@@ -90,7 +91,7 @@ const navMenuCircleCss = css`
   border-radius: 10px;
   margin-right: 24px;
 
-  @media (min-width: ${widthBreakpoint.mobile}px) {
+  @media (min-width: ${widthBreakpoint.tablet}px) {
     display: none;
   }
 `;
@@ -105,7 +106,7 @@ const navMenuItemCss = css`
   letter-spacing: 1.36364px;
   cursor: pointer;
 
-  @media (min-width: ${widthBreakpoint.mobile}px) {
+  @media (min-width: ${widthBreakpoint.tablet}px) {
     color: rgba(255, 255, 255, 0.4980392157);
     font-size: 15px;
     letter-spacing: 1px;
@@ -116,7 +117,7 @@ const navMenuItemCss = css`
   }
 `;
 const navMenuItemSelectedCss = css`
-  @media (min-width: ${widthBreakpoint.web}px) {
+  @media (min-width: ${widthBreakpoint.laptop}px) {
     color: #ffffff;
   }
 `;
@@ -125,7 +126,7 @@ const listIconCss = css`
   height: 8px;
   margin: 0 0 0 auto;
 
-  @media (min-width: ${widthBreakpoint.mobile}px) {
+  @media (min-width: ${widthBreakpoint.tablet}px) {
     display: none;
   }
 `;
@@ -172,7 +173,7 @@ function Navbar({
                 ? cx(
                     navMenuListItemCss,
                     css`
-                      @media (min-width: ${widthBreakpoint.web}px) {
+                      @media (min-width: ${widthBreakpoint.laptop}px) {
                         border-top: 4px solid ${colors[name.toLowerCase()]};
                         border-bottom: 4px solid transparent;
                       }

@@ -10,13 +10,13 @@ const headerCss = css`
   height: 68px;
   padding: 0 24px;
 
-  @media (min-width: ${widthBreakpoint.mobile}px) {
+  @media (min-width: ${widthBreakpoint.tablet}px) {
     flex-direction: column;
     height: 160px;
     padding: 0 0;
   }
 
-  @media (min-width: ${widthBreakpoint.web}px) {
+  @media (min-width: ${widthBreakpoint.laptop}px) {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -28,11 +28,11 @@ const titleCss = css`
   font-weight: 400;
   font-size: 28px;
 
-  @media (min-width: ${widthBreakpoint.mobile}px) {
+  @media (min-width: ${widthBreakpoint.tablet}px) {
     padding-top: 32px;
   }
 
-  @media (min-width: ${widthBreakpoint.web}px) {
+  @media (min-width: ${widthBreakpoint.laptop}px) {
     letter-spacing: -1.05px;
     width: 109px;
     margin: 22px 0 0 2.22222222%;

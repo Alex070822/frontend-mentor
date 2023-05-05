@@ -1,4 +1,5 @@
 export const widthBreakpoint = {
-  web: 769,
-  mobile: 481,
+  large: 1200,
+  laptop: 769,
+  tablet: 481,
 };

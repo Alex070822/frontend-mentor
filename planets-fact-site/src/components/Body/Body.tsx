@@ -9,12 +9,12 @@ const mainCss = css`
   flex-direction: column;
   align-items: center;
 
-  @media (min-width: ${widthBreakpoint.mobile}px) {
+  @media (min-width: ${widthBreakpoint.tablet}px) {
     flex-direction: row;
     flex-wrap: wrap;
   }
 
-  @media (min-width: ${widthBreakpoint.web}px) {
+  @media (min-width: ${widthBreakpoint.laptop}px) {
     display: grid;
     grid-template-columns: 64.236111% auto;
     grid-auto-rows: minmax(100px, auto);
@@ -29,7 +29,7 @@ const mainInfoMenuCss = css`
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 
-  @media (min-width: ${widthBreakpoint.mobile}px) {
+  @media (min-width: ${widthBreakpoint.tablet}px) {
     order: 3;
     flex-direction: column;
     row-gap: 16px;
@@ -42,7 +42,7 @@ const mainInfoMenuCss = css`
     counter-reset: section;
   }
 
-  @media (min-width: ${widthBreakpoint.web}px) {
+  @media (min-width: ${widthBreakpoint.laptop}px) {
     grid-column: 2;
     grid-row: 2;
     width: 100%;
@@ -64,7 +64,7 @@ const mainInfoMenuBtnCss = css`
   width: 80px;
   cursor: pointer;
 
-  @media (min-width: ${widthBreakpoint.mobile}px) {
+  @media (min-width: ${widthBreakpoint.tablet}px) {
     justify-content: left;
     flex-wrap: wrap;
     color: #ffffff;
@@ -92,31 +92,44 @@ const planetCss = css`
   height: 304px;
   padding: 0 0 3px 0;
 
-  @media (min-width: ${widthBreakpoint.mobile}px) {
+  @media (min-width: ${widthBreakpoint.tablet}px) {
     order: 1;
     height: 460px;
     padding: 16px 0 0 0;
   }
 
-  @media (min-width: ${widthBreakpoint.web}px) {
+  @media (min-width: ${widthBreakpoint.laptop}px) {
     grid-column: 1;
     grid-row: 1/3;
     height: 754px;
-    width: available;
     padding: 20px 0 0 0;
   }
 `;
 const planetImgCss = css`
-  aspect-ratio: 1/1;
-  width: 29.6%;
+  transform: scale(0.38275);
 
-  @media (min-width: ${widthBreakpoint.mobile}px) {
-    width: 23.958333%;
+  @media (min-width: ${widthBreakpoint.tablet}px) {
+    transform: scale(0.63448);
   }
 
-  @media (min-width: ${widthBreakpoint.web}px) {
-    width: 31.35135%;
+  @media (min-width: ${widthBreakpoint.laptop}px) {
+    transform: scale(1);
   }
+`;
+const planetImgGeologyCss = css`
+  position: absolute;
+  aspect-ratio: 0.81909;
+  width: 11.3194444%;
+  margin-top: 25%;
+  z-index: 1;
+
+  @media (min-width: ${widthBreakpoint.large}px) {
+    width: 163px;
+    margin-top: 360px;
+  }
+`;
+const hiddenPlanetImgGeologyCss = css`
+  display: none;
 `;
 const generalInfoCss = css`
   display: flex;
@@ -125,7 +138,7 @@ const generalInfoCss = css`
   width: 87.2%;
   margin-bottom: 28px;
 
-  @media (min-width: ${widthBreakpoint.mobile}px) {
+  @media (min-width: ${widthBreakpoint.tablet}px) {
     order: 2;
     align-items: flex-start;
     height: auto;
@@ -133,7 +146,7 @@ const generalInfoCss = css`
     margin: 0 0 27px 5.2083333%;
   }
 
-  @media (min-width: ${widthBreakpoint.web}px) {
+  @media (min-width: ${widthBreakpoint.laptop}px) {
     grid-column: 2;
     grid-row: 1;
     width: 100%;
@@ -147,12 +160,12 @@ const generalInfoNameCss = css`
   text-transform: uppercase;
   margin-bottom: 16px;
 
-  @media (min-width: ${widthBreakpoint.mobile}px) {
+  @media (min-width: ${widthBreakpoint.tablet}px) {
     font-size: 48px;
     margin-bottom: 24px;
   }
 
-  @media (min-width: ${widthBreakpoint.web}px) {
+  @media (min-width: ${widthBreakpoint.laptop}px) {
     font-size: 80px;
     margin-bottom: 23px;
   }
@@ -165,11 +178,11 @@ const generalInfoSummaryCss = css`
   line-height: 22px;
   margin-bottom: 32px;
 
-  @media (min-width: ${widthBreakpoint.mobile}px) {
+  @media (min-width: ${widthBreakpoint.tablet}px) {
     text-align: left;
   }
 
-  @media (min-width: ${widthBreakpoint.web}px) {
+  @media (min-width: ${widthBreakpoint.laptop}px) {
     font-size: 18px;
     line-height: 25px;
     margin-bottom: 24px;
@@ -184,7 +197,7 @@ const generalInfoSourceCss = css`
   align-items: center;
   justify-content: center;
 
-  @media (min-width: ${widthBreakpoint.web}px) {
+  @media (min-width: ${widthBreakpoint.laptop}px) {
     font-size: 17px;
     margin-bottom: 39px;
   }
@@ -211,7 +224,7 @@ const detailsCss = css`
   width: 100%;
   margin-bottom: 28px;
 
-  @media (min-width: ${widthBreakpoint.mobile}px) {
+  @media (min-width: ${widthBreakpoint.tablet}px) {
     order: 4;
     flex-direction: row;
     column-gap: 11px;
@@ -219,7 +232,7 @@ const detailsCss = css`
     justify-content: center;
   }
 
-  @media (min-width: ${widthBreakpoint.web}px) {
+  @media (min-width: ${widthBreakpoint.laptop}px) {
     grid-column: 1/3;
     grid-row: 3;
     column-gap: 30px;
@@ -235,7 +248,7 @@ const detailsItemCss = css`
   padding: 0 24px;
   margin: 0 auto;
 
-  @media (min-width: ${widthBreakpoint.mobile}px) {
+  @media (min-width: ${widthBreakpoint.tablet}px) {
     flex-direction: column;
     height: 100%;
     width: 21.356%;
@@ -245,7 +258,7 @@ const detailsItemCss = css`
     margin: 0;
   }
 
-  @media (min-width: ${widthBreakpoint.web}px) {
+  @media (min-width: ${widthBreakpoint.laptop}px) {
     height: 128px;
     width: 100%;
     padding: 0 0 0 23px;
@@ -258,7 +271,7 @@ const detailsItemTitleCss = css`
   color: rgba(255, 255, 255, 0.4980392157);
   letter-spacing: 0.727273px;
 
-  @media (min-width: ${widthBreakpoint.web}px) {
+  @media (min-width: ${widthBreakpoint.laptop}px) {
     font-size: 14px;
     margin-bottom: 4px;
   }
@@ -268,12 +281,12 @@ const detailsItemDataCss = css`
   font-size: 20px;
   margin: 0 0 0 auto;
 
-  @media (min-width: ${widthBreakpoint.mobile}px) {
+  @media (min-width: ${widthBreakpoint.tablet}px) {
     font-size: 24px;
     margin: 0;
   }
 
-  @media (min-width: ${widthBreakpoint.web}px) {
+  @media (min-width: ${widthBreakpoint.laptop}px) {
     font-size: 40px;
   }
 `;
@@ -298,6 +311,20 @@ const Body: FC<PlanetProps> = ({
   selectedSummaryType,
   setSelectedSummaryType,
 }: PlanetProps) => {
+  const reqSvgs = require.context("../../assets", true, /\.svg$/);
+  const paths = reqSvgs.keys();
+  console.log(paths);
+
+  const imgTitles = {
+    overview: "planet",
+    structure: "internal",
+    geology: "planet",
+  };
+  const imgPath = images[imgTitles[selectedSummaryType]].replace(
+    "./assets/",
+    "./"
+  );
+
   const sourceIcon = require("../../assets/icon-source.svg").default;
 
   const tabs: Array<{
@@ -309,6 +336,13 @@ const Body: FC<PlanetProps> = ({
     { value: "geology", label: "Geology" },
   ];
 
+  const detailsData = [
+    { label: "Rotation Time", value: rotation },
+    { label: "Revolution Time", value: revolution },
+    { label: "Radius", value: radius },
+    { label: "Average Temp", value: temperature },
+  ];
+
   return (
     <main className={mainCss}>
       <div className={mainInfoMenuCss}>
@@ -317,7 +351,7 @@ const Body: FC<PlanetProps> = ({
             key={value}
             className={cx(
               css`
-                @media (max-width: ${widthBreakpoint.mobile}px) {
+                @media (max-width: ${widthBreakpoint.tablet}px) {
                   border-bottom-color: ${accentColor};
                 }
               `,
@@ -329,7 +363,7 @@ const Body: FC<PlanetProps> = ({
                       border-bottom: 4px solid red;
                       border-top: 4px solid transparent;
 
-                      @media (min-width: ${widthBreakpoint.mobile}px) {
+                      @media (min-width: ${widthBreakpoint.tablet}px) {
                         background: ${colors[name.toLowerCase()]};
                       }
                     `
@@ -343,7 +377,16 @@ const Body: FC<PlanetProps> = ({
         ))}
       </div>
       <div className={planetCss}>
-        <img src={sourceIcon} alt={name} className={planetImgCss} />
+        <img src={reqSvgs(`${imgPath}`)} alt={name} className={planetImgCss} />
+        <img
+          src={require(`../../assets/geology-${name.toLowerCase()}.png`)}
+          alt={`geology ${name}`}
+          className={`${
+            selectedSummaryType === "geology"
+              ? planetImgGeologyCss
+              : hiddenPlanetImgGeologyCss
+          }`}
+        />
       </div>
       <div className={generalInfoCss}>
         <h1 className={generalInfoNameCss}>{name}</h1>
@@ -366,22 +409,12 @@ const Body: FC<PlanetProps> = ({
         </div>
       </div>
       <div className={detailsCss}>
-        <div className={detailsItemCss}>
-          <div className={detailsItemTitleCss}>Rotation Time</div>
-          <div className={detailsItemDataCss}>{rotation}</div>
-        </div>
-        <div className={detailsItemCss}>
-          <div className={detailsItemTitleCss}>Revolution Time</div>
-          <div className={detailsItemDataCss}>{revolution}</div>
-        </div>
-        <div className={detailsItemCss}>
-          <div className={detailsItemTitleCss}>Radius</div>
-          <div className={detailsItemDataCss}>{radius}</div>
-        </div>
-        <div className={detailsItemCss}>
-          <div className={detailsItemTitleCss}>Average Temp.</div>
-          <div className={detailsItemDataCss}>{temperature}</div>
-        </div>
+        {detailsData.map((detail, index) => (
+          <div className={detailsItemCss} key={index}>
+            <div className={detailsItemTitleCss}>{detail.label}</div>
+            <div className={detailsItemDataCss}>{detail.value}</div>
+          </div>
+        ))}
       </div>
     </main>
   );
