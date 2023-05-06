@@ -297,6 +297,8 @@ interface PlanetProps {
   setSelectedSummaryType: React.Dispatch<React.SetStateAction<SummaryType>>;
 }
 
+const reqSvgs = require.context("../../assets", true, /\.svg$/);
+
 const Body: FC<PlanetProps> = ({
   planet: {
     name,
@@ -311,10 +313,6 @@ const Body: FC<PlanetProps> = ({
   selectedSummaryType,
   setSelectedSummaryType,
 }: PlanetProps) => {
-  const reqSvgs = require.context("../../assets", true, /\.svg$/);
-  const paths = reqSvgs.keys();
-  console.log(paths);
-
   const imgTitles = {
     overview: "planet",
     structure: "internal",
@@ -409,10 +407,10 @@ const Body: FC<PlanetProps> = ({
         </div>
       </div>
       <div className={detailsCss}>
-        {detailsData.map((detail, index) => (
-          <div className={detailsItemCss} key={index}>
-            <div className={detailsItemTitleCss}>{detail.label}</div>
-            <div className={detailsItemDataCss}>{detail.value}</div>
+        {detailsData.map(({ label, value }) => (
+          <div className={detailsItemCss} key={value}>
+            <div className={detailsItemTitleCss}>{label}</div>
+            <div className={detailsItemDataCss}>{value}</div>
           </div>
         ))}
       </div>
