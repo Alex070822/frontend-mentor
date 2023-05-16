@@ -1,55 +1,53 @@
 import "./App.css";
+import { TimeLeft } from "./components";
 import Countdown from "./components/Countdown/Countdown";
 import Footer from "./components/Footer/Footer";
 import { useEffect, useState } from "react";
 
-export interface TimeLeft {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-}
-
 function App() {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
+  const [duration, setDuration] = useState<TimeLeft>({
+    days: 8,
+    hours: 23,
+    minutes: 55,
+    seconds: 41,
   });
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setTimeLeft(calculateTimeLeft());
+    const timer = setInterval(() => {
+      setDuration((prevDuration) => {
+        const { days, hours, minutes, seconds } = prevDuration;
+
+        const totalSeconds =
+          days * 24 * 60 * 60 + hours * 60 * 60 + minutes * 60 + seconds;
+
+        if (totalSeconds <= 0) {
+          clearInterval(timer);
+          return prevDuration;
+        }
+
+        const updatedTotalSeconds = totalSeconds - 1;
+
+        const updatedDuration: TimeLeft = {
+          days: Math.floor(updatedTotalSeconds / (24 * 60 * 60)),
+          hours: Math.floor((updatedTotalSeconds % (24 * 60 * 60)) / (60 * 60)),
+          minutes: Math.floor((updatedTotalSeconds % (60 * 60)) / 60),
+          seconds: updatedTotalSeconds % 60,
+        };
+
+        return updatedDuration;
+      });
     }, 1000);
 
-    return () => clearTimeout(timer);
-  });
-
-  function calculateTimeLeft(): TimeLeft {
-    const targetDate = new Date();
-    targetDate.setDate(targetDate.getDate() + 8);
-    targetDate.setHours(23, 55, 41, 0);
-    const difference = +targetDate - +new Date();
-    let timeLeft: TimeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
-
-    if (difference > 0) {
-      timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      };
-    }
-
-    return timeLeft;
-  }
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
 
   return (
     <div className="App">
       <main>
         <h1>We're launching soon</h1>
-        <Countdown timeLeft={timeLeft} />
+        <Countdown timeLeft={duration} />
       </main>
       <Footer />
     </div>
