@@ -16,3 +16,10 @@ body {
   background-position: 85% 100%, top center;
   background-size: auto 168px, auto, 100%;
 }
+
+@media (min-width: 1025px) {
+  body {
+    background-position: 0 100%, top center;
+    background-size: 100% 197px, 100% 569px, 100%;
+  }
+}

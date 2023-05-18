@@ -1,15 +1,55 @@
-import "./footer.css";
+import { css } from "@emotion/css";
+import { widthBreakpoint } from "../shared";
+
+const footerCss = css`
+  position: absolute;
+  bottom: 17px;
+  width: 100%;
+
+  @media (min-width: ${widthBreakpoint.desktop}px) {
+    bottom: 26px;
+  }
+`;
+const iconsCss = css`
+  display: flex;
+  column-gap: 32px;
+  justify-content: center;
+`;
+const footerIconContainerCss = css`
+  cursor: pointer;
+  height: 24px;
+`;
+const footerIconCss = css`
+  &:hover path {
+    fill: #fb5e84;
+  }
+`;
+const attributionCss = css`
+  color: #ffffff;
+  font-size: 11px;
+  text-align: center;
+  margin: 17px 0 0 0;
+
+  a {
+    color: #fb5e84;
+  }
+
+  @media (min-width: ${widthBreakpoint.desktop}px) {
+    font-size: 15px;
+    margin: 26px 0 0 0;
+  }
+`;
 
 function Footer() {
   return (
-    <footer>
-      <div className="icons">
-        <a className="footer-icon-container">
+    <footer className={footerCss}>
+      <div className={iconsCss}>
+        <a className={footerIconContainerCss}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
-            className="footer-icon"
+            className={footerIconCss}
           >
             <path
               fill="#8385A9"
@@ -17,12 +57,12 @@ function Footer() {
             />
           </svg>
         </a>
-        <a className="footer-icon-container">
+        <a className={footerIconContainerCss}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
-            className="footer-icon"
+            className={footerIconCss}
           >
             <path
               fill="#8385A9"
@@ -30,12 +70,12 @@ function Footer() {
             />
           </svg>
         </a>
-        <a className="footer-icon-container">
+        <a className={footerIconContainerCss}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
-            className="footer-icon"
+            className={footerIconCss}
           >
             <path
               fill="#8385A9"
@@ -44,7 +84,7 @@ function Footer() {
           </svg>
         </a>
       </div>
-      <div className="attribution">
+      <div className={attributionCss}>
         Challenge by{" "}
         <a
           href="https://www.frontendmentor.io/challenges/launch-countdown-timer-N0XkGfyz-"

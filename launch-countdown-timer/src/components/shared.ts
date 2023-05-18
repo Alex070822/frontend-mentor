@@ -1,3 +1,3 @@
 export const widthBreakpoint = {
-  web: 769,
+  desktop: 1025,
 };
