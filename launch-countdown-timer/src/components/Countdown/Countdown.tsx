@@ -188,11 +188,15 @@ interface CountdownProps {
 const Countdown: FC<CountdownProps> = ({
   timeLeft: { days, hours, minutes, seconds },
 }: CountdownProps) => {
+  const formatValue = (value: number): string => {
+    return value < 10 ? `0${value}` : value.toString();
+  };
+
   const counters = [
-    { label: "DAYS", value: days },
-    { label: "HOURS", value: hours },
-    { label: "MINUTES", value: minutes },
-    { label: "SECONDS", value: seconds },
+    { label: "DAYS", value: formatValue(days) },
+    { label: "HOURS", value: formatValue(hours) },
+    { label: "MINUTES", value: formatValue(minutes) },
+    { label: "SECONDS", value: formatValue(seconds) },
   ];
 
   return (
